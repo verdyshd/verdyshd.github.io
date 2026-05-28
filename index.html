@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дмитрий Вердыш — Digital Marketing & Web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #161616;
+    --bg3: #1f1f1f;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.15);
+    --text: #f0ede8;
+    --text2: #999;
+    --text3: #666;
+    --accent: #c8ff00;
+    --accent2: #a8d900;
+    --red: #ff4d4d;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    background: rgba(13,13,13,0.85);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    color: var(--text2);
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 100px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-bottom: 2rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 .line2 {
+    display: block;
+    color: var(--accent);
+  }
+
+  .hero h1 .line3 {
+    display: block;
+    color: var(--text2);
+    font-weight: 400;
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .hero-desc {
+    max-width: 480px;
+    color: var(--text2);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: var(--bg);
+    border-radius: 100px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--border2);
+    border-radius: 100px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text2);
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 3rem;
+  }
+
+  .section-title span { color: var(--accent); }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--bg);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: var(--bg3); }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(200,255,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.3rem;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-card p {
+    font-size: 0.875rem;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  /* SKILLS */
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    .skills-layout { grid-template-columns: 1fr; }
+  }
+
+  .skill-group-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border2);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--text2);
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200,255,0,0.05);
+  }
+
+  .tag.accent {
+    border-color: rgba(200,255,0,0.3);
+    color: var(--accent);
+    background: rgba(200,255,0,0.06);
+  }
+
+  /* EXPERIENCE */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
+  .timeline-meta { padding-top: 0.25rem; }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-company {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .timeline-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .timeline-tag {
+    padding: 0.25rem 0.7rem;
+    background: var(--bg3);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--text2);
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .contact-big {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .contact-big span { color: var(--accent); }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--border2);
+    background: var(--bg3);
+    transform: translateX(4px);
+  }
+
+  .contact-link-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-link-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--bg3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .contact-link-info {}
+  .contact-link-label {
+    font-size: 0.75rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .contact-link-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .contact-arrow {
+    color: var(--text3);
+    font-size: 1.2rem;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover .contact-arrow { color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text3);
+  }
+
+  /* SCROLL FADE */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">DV<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#skills">Навыки</a></li>
+    <li><a href="#experience">Опыт</a></li>
+    <li><a href="#contact">Контакт</a></li>
+  </ul>
+  <a href="https://t.me/verdyshd" class="nav-cta" target="_blank">Написать</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Доступен для работы · Кишинев</div>
+  <h1>
+    Дмитрий
+    <span class="line2">Вердыш</span>
+    <span class="line3">Digital & Dev</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      <strong>Digital-маркетолог и веб-разработчик.</strong> Настраиваю рекламу, продвигаю сайты, разрабатываю интерфейсы и внедряю AI-инструменты в рабочие процессы.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Связаться →</a>
+      <a href="#services" class="btn-ghost">Услуги</a>
+    </div>
+  </div>
+  <div class="hero-stats" style="margin-top:3rem;">
+    <div class="stat">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">года опыта</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="age-num">22</div>
+      <div class="stat-label">года, Кишинев</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">направлений</div>
+    </div>
+  </div>
+</div>
+
+<section id="services" class="fade-in">
+  <div class="section-label">Что я делаю</div>
+  <h2 class="section-title">Услуги</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Performance-маркетинг</h3>
+      <p>Настройка и ведение рекламных кампаний в Google Ads, Meta Ads. Оптимизация под конверсии и окупаемость.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>SEO-продвижение</h3>
+      <p>Оптимизация сайта, работа с семантикой, карточками товаров и структурой контента для роста трафика.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Аналитика и отчётность</h3>
+      <p>Создание аналитических таблиц, анализ рынка и конкурентной среды, расчёт окупаемости.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌐</div>
+      <h3>Веб-разработка</h3>
+      <p>Разработка сайтов, UX-улучшения в рамках шаблонов, баннеры и визуальное оформление.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3>AI-инструменты</h3>
+      <p>Внедрение и использование AI в рабочих процессах — автоматизация, генерация контента, оптимизация.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📦</div>
+      <h3>E-commerce</h3>
+      <p>Работа с 1С, ведение товарной базы, оптимизация карточек товаров, ценовая политика.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="fade-in">
+  <div class="section-label">Инструменты</div>
+  <h2 class="section-title">Стек <span>&</span> навыки</h2>
+  <div class="skills-layout">
+    <div>
+      <div class="skill-group-title">Маркетинг</div>
+      <div class="skill-tags">
+        <span class="tag accent">Google Ads</span>
+        <span class="tag accent">Meta Ads</span>
+        <span class="tag accent">SEO</span>
+        <span class="tag">Google Analytics</span>
+        <span class="tag">Performance-маркетинг</span>
+        <span class="tag">CRM</span>
+        <span class="tag">E-commerce аналитика</span>
+        <span class="tag">Ценовая политика</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Разработка & дизайн</div>
+      <div class="skill-tags">
+        <span class="tag accent">HTML / CSS</span>
+        <span class="tag accent">JavaScript</span>
+        <span class="tag">UX/UI</span>
+        <span class="tag">Figma</span>
+        <span class="tag">Баннеры</span>
+        <span class="tag">Веб-шаблоны</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Инструменты</div>
+      <div class="skill-tags">
+        <span class="tag accent">1С</span>
+        <span class="tag">MS Office</span>
+        <span class="tag">Google Docs / Sheets</span>
+        <span class="tag">AI-инструменты</span>
+        <span class="tag">Документооборот</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Языки</div>
+      <div class="skill-tags">
+        <span class="tag accent">Русский — родной</span>
+        <span class="tag">Английский — базовый</span>
+        <span class="tag">Румынский — учу</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="fade-in">
+  <div class="section-label">Карьера</div>
+  <h2 class="section-title">Опыт <span>работы</span></h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <div class="timeline-date">Декабрь 2025 — сейчас</div>
+        <div class="timeline-company">SC Stafolet SRL</div>
+      </div>
+      <div class="timeline-content">
+        <h3>Digital-маркетолог / E-commerce специалист</h3>
+        <p>Настройка рекламных кампаний, SEO, анализ рынка, ценообразование, работа с карточками товаров, разработка баннеров, UX-улучшения, 1С, аналитика, внедрение AI.</p>
+        <div class="timeline-tags">
+          <span class="timeline-tag">Performance</span>
+          <span class="timeline-tag">SEO</span>
+          <span class="timeline-tag">1С</span>
+          <span class="timeline-tag">E-commerce</span>
+          <span class="timeline-tag">AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <div class="timeline-date">Май 2023 — Ноябрь 2025</div>
+        <div class="timeline-company">Частная организация</div>
+      </div>
+      <div class="timeline-content">
+        <h3>Офис-менеджер / Административный специалист</h3>
+        <p>Документооборот, юридическая документация, финансовый учёт, деловая переписка и переводы, контроль организационных процессов.</p>
+        <div class="timeline-tags">
+          <span class="timeline-tag">MS Office</span>
+          <span class="timeline-tag">Google Docs</span>
+          <span class="timeline-tag">Документы</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <div class="timeline-date">Май — Сентябрь 2023</div>
+        <div class="timeline-company">Частная организация</div>
+      </div>
+      <div class="timeline-content">
+        <h3>Менеджер по работе с клиентами / Лидогенерация</h3>
+        <p>Холодные звонки, ведение клиентской базы, поиск перевозчиков, координация сделок, сопровождение клиентов.</p>
+        <div class="timeline-tags">
+          <span class="timeline-tag">CRM</span>
+          <span class="timeline-tag">Лидогенерация</span>
+          <span class="timeline-tag">Аналитика</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="fade-in">
+  <div class="contact-grid">
+    <div>
+      <div class="section-label">Контакт</div>
+      <div class="contact-big">Давай<br>работать<br><span>вместе</span></div>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:verdyshd@gmail.com" class="contact-link">
+        <div class="contact-link-left">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">verdyshd@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-arrow">↗</div>
+      </a>
+      <a href="tel:+37360410819" class="contact-link">
+        <div class="contact-link-left">
+          <div class="contact-link-icon">📞</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Телефон</div>
+            <div class="contact-link-value">+373 604 10 819</div>
+          </div>
+        </div>
+        <div class="contact-arrow">↗</div>
+      </a>
+      <a href="https://www.facebook.com/verdyshd/" target="_blank" class="contact-link">
+        <div class="contact-link-left">
+          <div class="contact-link-icon">📘</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Facebook</div>
+            <div class="contact-link-value">verdyshd</div>
+          </div>
+        </div>
+        <div class="contact-arrow">↗</div>
+      </a>
+      <a href="https://www.rabota.md/ru/resume/managers/490957" target="_blank" class="contact-link">
+        <div class="contact-link-left">
+          <div class="contact-link-icon">📄</div>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Резюме</div>
+            <div class="contact-link-value">rabota.md / профиль</div>
+          </div>
+        </div>
+        <div class="contact-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Дмитрий Вердыш</div>
+  <div class="footer-copy">Кишинев · <span id="copy-year"></span></div>
+</footer>
+
+<script>
+  const birth = new Date(2003, 3, 1);
+  const now = new Date();
+  let age = now.getFullYear() - birth.getFullYear();
+  if (now < new Date(now.getFullYear(), 3, 1)) age--;
+  document.getElementById('age-num').textContent = age;
+  document.getElementById('copy-year').textContent = now.getFullYear();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
