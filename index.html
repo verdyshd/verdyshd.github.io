@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/simple-icons@11/dist/simple-icons.min.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -80,17 +81,19 @@
   .nav-cta {
     font-size: 0.875rem;
     padding: 0.5rem 1.25rem;
-    border: 1px solid var(--accent);
-    color: var(--accent);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    background: transparent;
     border-radius: 100px;
     font-family: 'Syne', sans-serif;
     font-weight: 600;
     transition: all 0.2s;
+    cursor: pointer;
   }
 
   .nav-cta:hover {
-    background: var(--accent);
-    color: var(--bg);
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   /* HERO */
@@ -516,7 +519,49 @@
     color: var(--text3);
   }
 
-  /* SCROLL FADE */
+  .dropdown { position: relative; }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 200px;
+    z-index: 200;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .dropdown-menu.open { display: block; }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.9rem;
+    color: var(--text2);
+    transition: background 0.15s, color 0.15s;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dropdown-item:last-child { border-bottom: none; }
+  .dropdown-item:hover { background: var(--bg3); color: var(--text); }
+  .dropdown-item.tg { color: var(--accent); }
+  .dropdown-item.tg:hover { background: rgba(200,255,0,0.07); }
+
+  .dd-badge {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    background: rgba(200,255,0,0.12);
+    color: var(--accent);
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
   .fade-in {
     opacity: 0;
     transform: translateY(24px);
@@ -539,10 +584,29 @@
     <li><a href="#experience">Опыт</a></li>
     <li><a href="#contact">Контакт</a></li>
   </ul>
-  <div style="display:flex;gap:0.5rem;align-items:center;">
-    <a href="https://t.me/+37360410819" class="nav-cta" target="_blank" style="background:rgba(200,255,0,0.1);">Telegram ★</a>
-    <a href="https://wa.me/37360410819" class="nav-cta" target="_blank">WhatsApp</a>
-    <a href="viber://chat?number=%2B37360410819" class="nav-cta" target="_blank">Viber</a>
+  <div class="dropdown" id="navDropdown">
+    <button class="nav-cta" onclick="toggleDropdown()">Написать ▾</button>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="https://t.me/+37360410819" target="_blank" class="dropdown-item tg">
+        <span style="display:flex;align-items:center;gap:0.6rem;">
+          <span class="si-icon" data-icon="telegram" data-color="#29B6F6"></span>
+          Telegram
+        </span>
+        <span class="dd-badge">приоритет</span>
+      </a>
+      <a href="https://wa.me/37360410819" target="_blank" class="dropdown-item">
+        <span style="display:flex;align-items:center;gap:0.6rem;">
+          <span class="si-icon" data-icon="whatsapp" data-color="#25D366"></span>
+          WhatsApp
+        </span>
+      </a>
+      <a href="viber://chat?number=%2B37360410819" target="_blank" class="dropdown-item">
+        <span style="display:flex;align-items:center;gap:0.6rem;">
+          <span class="si-icon" data-icon="viber" data-color="#7360F2"></span>
+          Viber
+        </span>
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -742,7 +806,7 @@
       </a>
       <a href="https://t.me/+37360410819" class="contact-link" target="_blank" style="border-color:rgba(200,255,0,0.3);">
         <div class="contact-link-left">
-          <div class="contact-link-icon">✈️</div>
+          <div class="contact-link-icon"><span class="si-icon" data-icon="telegram" data-color="#29B6F6"></span></div>
           <div class="contact-link-info">
             <div class="contact-link-label">Telegram — приоритет ★</div>
             <div class="contact-link-value">+373 604 10 819</div>
@@ -752,7 +816,7 @@
       </a>
       <a href="https://wa.me/37360410819" class="contact-link" target="_blank">
         <div class="contact-link-left">
-          <div class="contact-link-icon">💬</div>
+          <div class="contact-link-icon"><span class="si-icon" data-icon="whatsapp" data-color="#25D366"></span></div>
           <div class="contact-link-info">
             <div class="contact-link-label">WhatsApp</div>
             <div class="contact-link-value">+373 604 10 819</div>
@@ -762,7 +826,7 @@
       </a>
       <a href="viber://chat?number=%2B37360410819" class="contact-link" target="_blank">
         <div class="contact-link-left">
-          <div class="contact-link-icon">📳</div>
+          <div class="contact-link-icon"><span class="si-icon" data-icon="viber" data-color="#7360F2"></span></div>
           <div class="contact-link-info">
             <div class="contact-link-label">Viber</div>
             <div class="contact-link-value">+373 604 10 819</div>
@@ -800,12 +864,40 @@
 </footer>
 
 <script>
+  function renderSimpleIcons() {
+    document.querySelectorAll('.si-icon').forEach(el => {
+      const name = el.dataset.icon;
+      const color = el.dataset.color || '#fff';
+      const key = 'si' + name.charAt(0).toUpperCase() + name.slice(1);
+      const icon = window.simpleIcons && window.simpleIcons[key];
+      if (!icon) return;
+      const size = el.closest('.contact-link-icon') ? 22 : 18;
+      el.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" xmlns="http://www.w3.org/2000/svg"><path d="${icon.path}"/></svg>`;
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderSimpleIcons);
+  } else {
+    renderSimpleIcons();
+  }
+
   const birth = new Date(2003, 3, 1);
   const now = new Date();
   let age = now.getFullYear() - birth.getFullYear();
   if (now < new Date(now.getFullYear(), 3, 1)) age--;
   document.getElementById('age-num').textContent = age;
   document.getElementById('copy-year').textContent = now.getFullYear();
+
+  function toggleDropdown() {
+    document.getElementById('dropdownMenu').classList.toggle('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!document.getElementById('navDropdown').contains(e.target)) {
+      document.getElementById('dropdownMenu').classList.remove('open');
+    }
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
