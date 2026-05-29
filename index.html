@@ -23,14 +23,15 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
     border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); background: rgba(13,13,13,0.9);
   }
-  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; justify-self: start; }
   .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; justify-self: center; }
   .nav-links a { font-size: 0.875rem; color: var(--text2); transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; justify-self: end; }
   .nav-cta { font-size: 0.875rem; padding: 0.5rem 1.25rem; border: 1px solid var(--border2); color: var(--text); background: transparent; border-radius: 100px; font-family: 'Syne', sans-serif; font-weight: 600; transition: all 0.2s; cursor: pointer; white-space: nowrap; }
   .nav-cta:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -163,7 +164,7 @@
     <li><a href="#experience">Опыт</a></li>
     <li><a href="#contact">Контакт</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:1rem;">
+  <div class="nav-right">
     <div class="dropdown" id="navDropdown">
       <button class="nav-cta" onclick="toggleDropdown()">Написать ▾</button>
       <div class="dropdown-menu" id="dropdownMenu">
@@ -343,7 +344,9 @@
     <div class="contact-links">
       <a href="mailto:verdyshd@gmail.com" class="contact-link">
         <div class="contact-link-left">
-          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
           <div><div class="contact-link-label">Email</div><div class="contact-link-value">verdyshd@gmail.com</div></div>
         </div>
         <div class="contact-arrow">↗</div>
@@ -384,10 +387,12 @@
         </div>
         <div class="contact-arrow">↗</div>
       </a>
-      <a href="https://www.rabota.md/ru/resume/managers/490957" target="_blank" class="contact-link">
+      <a href="resume.html" class="contact-link">
         <div class="contact-link-left">
-          <div class="contact-link-icon">📄</div>
-          <div><div class="contact-link-label">Резюме</div><div class="contact-link-value">rabota.md / профиль</div></div>
+          <div class="contact-link-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+          </div>
+          <div><div class="contact-link-label">Резюме</div><div class="contact-link-value">Открыть / Скачать</div></div>
         </div>
         <div class="contact-arrow">↗</div>
       </a>
