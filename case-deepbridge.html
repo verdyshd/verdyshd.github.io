@@ -92,6 +92,23 @@
   </div>
   <div class="hero-divider"></div>
 </div>
+<div style="max-width:980px;margin:0 auto;padding:0 2rem 1rem;">
+  <div style="font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12);">Интерфейс</div>
+  <figure style="margin:0 0 1rem;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+    <img src="assets/deepbridge/tools.png" alt="DeepBridge — выполнение инструментов" loading="lazy" style="width:100%;display:block;">
+    <figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;line-height:1.5;">Агент выполняет очередь инструментов (cmd, чтение/запись файлов) — со статусами, таймингами и итоговым результатом</figcaption>
+  </figure>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+    <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+      <img src="assets/deepbridge/ui.png" alt="DeepBridge — Web UI" loading="lazy" style="width:100%;display:block;">
+      <figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;line-height:1.5;">Web UI: список сессий, поиск по истории, режимы «Глубокое мышление» / «Умный поиск»</figcaption>
+    </figure>
+    <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+      <img src="assets/deepbridge/agent.png" alt="DeepBridge — рассуждение и запуск инструментов" loading="lazy" style="width:100%;display:block;">
+      <figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;line-height:1.5;">Рассуждение, генерация кода и запуск инструментов в одном потоке</figcaption>
+    </figure>
+  </div>
+</div>
 <div class="layout">
   <div>
     <div class="section">
@@ -114,25 +131,6 @@
         <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div class="fb"><h4>Session Management</h4><p>Управление чат-сессиями с историей, экспортом, контекстным меню и статистикой токенов. Полный жизненный цикл разговора.</p></div></div>
         <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fb"><h4>Web UI в стиле DeepSeek</h4><p>Минималистичный интерфейс с боковой панелью, режимами (Think / Normal), горячими клавишами, темами и поиском по истории. 20+ скриншотов UI-тестов.</p></div></div>
         <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="fb"><h4>Токен-авторизация</h4><p>Постоянный токен доступа загружается из файла при рестарте. Защита от несанкционированного доступа к локальному серверу.</p></div></div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="section-title">Интерфейс</div>
-      <div style="display:grid;grid-template-columns:1fr;gap:1rem;">
-        <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
-          <img src="assets/deepbridge/ui.png" alt="DeepBridge — Web UI" loading="lazy" style="width:100%;display:block;">
-          <figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;">Web UI: список сессий, поиск по истории, режимы «Глубокое мышление» / «Умный поиск»</figcaption>
-        </figure>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
-          <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
-            <img src="assets/deepbridge/shell.png" alt="DeepBridge — shell-инструмент" loading="lazy" style="width:100%;display:block;">
-            <figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;">Shell-инструмент: агент выполняет команду в терминале</figcaption>
-          </figure>
-          <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
-            <img src="assets/deepbridge/files.png" alt="DeepBridge — файловый инструмент" loading="lazy" style="width:100%;display:block;">
-            <figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;">File-инструмент: агент читает файлы рабочей директории</figcaption>
-          </figure>
-        </div>
       </div>
     </div>
   </div>
@@ -175,8 +173,8 @@ window.I18N = {
     "Токен-авторизация":"Token authorization","Постоянный токен доступа загружается из файла при рестарте. Защита от несанкционированного доступа к локальному серверу.":"A persistent access token is loaded from a file on restart. Protects the local server from unauthorized access.",
     "Интерфейс":"Interface",
     "Web UI: список сессий, поиск по истории, режимы «Глубокое мышление» / «Умный поиск»":"Web UI: session list, history search, “Deep Thinking” / “Smart Search” modes",
-    "Shell-инструмент: агент выполняет команду в терминале":"Shell tool: the agent runs a command in the terminal",
-    "File-инструмент: агент читает файлы рабочей директории":"File tool: the agent reads files in the working directory",
+    "Агент выполняет очередь инструментов (cmd, чтение/запись файлов) — со статусами, таймингами и итоговым результатом":"The agent runs a queue of tools (cmd, file read/write) — with statuses, timings and the final result",
+    "Рассуждение, генерация кода и запуск инструментов в одном потоке":"Reasoning, code generation and tool execution in one flow",
     "Тип":"Type","Линейка":"Lineage","Платформа":"Platform","Статус":"Status","Роль":"Role",
     "● Прототип · доработка":"● Prototype · refining","Автор / разработчик":"Author / developer","Стек":"Stack"
   },
@@ -197,8 +195,8 @@ window.I18N = {
     "Токен-авторизация":"令牌鉴权","Постоянный токен доступа загружается из файла при рестарте. Защита от несанкционированного доступа к локальному серверу.":"重启时从文件加载持久访问令牌。防止对本地服务器的未授权访问。",
     "Интерфейс":"界面",
     "Web UI: список сессий, поиск по истории, режимы «Глубокое мышление» / «Умный поиск»":"Web UI：会话列表、历史搜索、「深度思考」/「智能搜索」模式",
-    "Shell-инструмент: агент выполняет команду в терминале":"Shell 工具：智能体在终端执行命令",
-    "File-инструмент: агент читает файлы рабочей директории":"文件工具：智能体读取工作目录中的文件",
+    "Агент выполняет очередь инструментов (cmd, чтение/запись файлов) — со статусами, таймингами и итоговым результатом":"智能体执行一组工具（cmd、文件读写）—— 带状态、耗时与最终结果",
+    "Рассуждение, генерация кода и запуск инструментов в одном потоке":"在同一流程中完成推理、代码生成与工具调用",
     "Тип":"类型","Линейка":"沿革","Платформа":"平台","Статус":"状态","Роль":"角色",
     "● Прототип · доработка":"● 原型 · 完善中","Автор / разработчик":"作者 / 开发者","Стек":"技术栈"
   },
