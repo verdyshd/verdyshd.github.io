@@ -1,0 +1,21 @@
+# Private / heavy / non-site files — never publish
+Новая папка/
+_extract/
+.playwright-mcp/
+.claude/
+
+# local backups & temp
+index.original-*.html
+*.zip
+_*.png
+verify-*.png
+
+# secrets
+*.env
+*secret*
+*.credentials*
+
+# dev scratch / research — not part of live site
+badge-examples/
+templates/
+badge-verdysh.html

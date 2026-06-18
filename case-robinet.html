@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robinet.MD — портфолио</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg:#0d0d0d;--bg2:#161616;--bg3:#1f1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0ede8;--text2:#999;--text3:#666;--accent:#c8ff00; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6; }
+  h1,h2,h3,h4 { font-family:'Syne',sans-serif; }
+  a { color:inherit;text-decoration:none; }
+  .topbar { position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center; }
+  .nav-logo { font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em; }
+  .nav-logo span { color:var(--accent); }
+  .back-btn { font-size:0.85rem;color:var(--text2);font-family:'Syne',sans-serif;font-weight:600;transition:color 0.2s; }
+  .back-btn:hover { color:var(--accent); }
+  .hero { max-width:980px;margin:0 auto;padding:4rem 2rem 0; }
+  .hero-top { display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem; }
+  .project-icon { width:64px;height:64px;border-radius:14px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .hero h1 { font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem; }
+  .hero h1 span { color:var(--accent); }
+  .hero-desc { font-size:1rem;color:var(--text2);max-width:660px;line-height:1.75;margin-bottom:2rem; }
+  .hero-tags { display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem; }
+  .tag { padding:0.35rem 0.9rem;border:1px solid var(--border2);border-radius:100px;font-size:0.78rem;color:var(--text2); }
+  .tag.a { border-color:rgba(200,255,0,0.3);color:var(--accent);background:rgba(200,255,0,0.05); }
+  .dl-btn { display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--accent);color:#0d0d0d;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.875rem;transition:all 0.2s;margin-bottom:2.5rem; }
+  .dl-btn:hover { background:#a8d900;transform:translateY(-1px); }
+  .hero-divider { height:1px;background:var(--border);margin-bottom:3rem; }
+  .shot { max-width:980px;margin:0 auto;padding:0 2rem 1rem; }
+  .shot figure { margin:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg2); }
+  .shot img { width:100%;display:block; }
+  .shot figcaption { font-size:0.74rem;color:var(--text3);padding:0.6rem 0.95rem;line-height:1.5; }
+  /* BEFORE / AFTER SLIDER */
+  .ba { position:relative; aspect-ratio:16/9; border:1px solid var(--border); border-radius:14px; overflow:hidden; user-select:none; touch-action:pan-y; background:var(--bg2); }
+  .ba img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+  .ba .ba-after { z-index:1; }
+  .ba .ba-before { z-index:2; clip-path: inset(0 50% 0 0); }
+  .ba .ba-ph { position:absolute; inset:0; z-index:2; clip-path: inset(0 50% 0 0); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.6rem; background:#101010; color:var(--text3); text-align:center; padding:1rem; }
+  .ba .ba-ph .lg { font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;color:var(--text2);letter-spacing:-0.02em; }
+  .ba .ba-ph .lg span { color:#4d7cff; }
+  .ba .ba-ph small { font-size:0.78rem;max-width:260px;line-height:1.5; }
+  .ba-badge { position:absolute; top:14px; z-index:4; font-family:'Syne',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.04em; padding:0.3rem 0.85rem; border-radius:100px; }
+  .ba-do { left:14px; background:#ff4d4d; color:#fff; }
+  .ba-posle { right:14px; background:var(--accent); color:var(--bg); }
+  .ba-line { position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--accent); z-index:5; transform:translateX(-1px); pointer-events:none; }
+  .ba-knob { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:46px; height:46px; border-radius:50%; background:var(--accent); color:var(--bg); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,0.45); z-index:6; font-size:1.1rem; cursor:grab; touch-action:none; }
+  .ba-knob:active { cursor:grabbing; }
+  /* WORKS — окно браузера с прокруткой, 3 страницы */
+  .works { max-width:980px; margin:0 auto; padding:0 2rem 1rem; }
+  .works-tabs { display:flex; gap:8px; margin-bottom:1rem; flex-wrap:wrap; }
+  .wt { font-family:'DM Sans',sans-serif; font-size:0.82rem; color:var(--text2); background:var(--bg2); border:1px solid var(--border); border-radius:100px; padding:0.5rem 1.1rem; cursor:pointer; transition:.15s; }
+  .wt:hover { color:var(--text); border-color:var(--border2); }
+  .wt.active { background:var(--accent); color:var(--bg); border-color:var(--accent); font-weight:500; }
+  .browser { border:1px solid var(--border2); border-radius:14px; overflow:hidden; background:#0a0a0a; }
+  .bbar { display:flex; align-items:center; gap:7px; padding:0.6rem 0.95rem; background:#161616; border-bottom:1px solid var(--border); }
+  .bbar .d { width:11px;height:11px;border-radius:50%;background:#3a3a3a; }
+  .bbar .u { margin-left:0.6rem; font-size:0.72rem; color:var(--text3); font-family:monospace; }
+  .bscroll { height:480px; overflow-y:auto; background:#fff; }
+  .bscroll img { width:100%; display:block; }
+  @media(max-width:768px){ .works{padding:0 1.25rem 1rem;} .bscroll{height:360px;} }
+  .layout { max-width:980px;margin:0 auto;padding:1rem 2rem 5rem;display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start; }
+  @media(max-width:768px){.layout{grid-template-columns:1fr}.topbar,.hero,.shot{padding-left:1.25rem;padding-right:1.25rem}.layout{padding:1rem 1.25rem 4rem}}
+  .section { margin-bottom:2.5rem; }
+  .section-title { font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12); }
+  .section-text { font-size:0.92rem;color:var(--text2);line-height:1.75; }
+  .features { display:flex;flex-direction:column;gap:0.85rem; }
+  .feature { display:flex;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px; }
+  .fi { width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+  .fb h4 { font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;margin-bottom:0.25rem; }
+  .fb p { font-size:0.82rem;color:var(--text2);line-height:1.6; }
+  .sidebar-card { background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem; }
+  .sct { font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);padding:1rem 1.25rem 0;margin-bottom:0.75rem; }
+  .ir { display:flex;justify-content:space-between;align-items:center;padding:0.6rem 1.25rem;border-top:1px solid var(--border);font-size:0.83rem;gap:1rem; }
+  .ir:first-of-type { border-top:none; }
+  .il { color:var(--text3); }
+  .iv { color:var(--text);font-weight:500;text-align:right; }
+  .iv.a { color:var(--accent); }
+  .stack-list { padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem; }
+  .st { padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2); }
+  .sidebar { position:sticky;top:80px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="portfolio.html" class="back-btn">← Портфолио</a>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
+    <div class="nav-logo">DV<span>.</span></div>
+  </div>
+</div>
+<div class="hero">
+  <div class="hero-top">
+    <div class="project-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;">Сайт · E-commerce</div>
+      <div style="font-size:0.82rem;color:var(--text3);">Клиентский проект · Молдова · RO</div>
+    </div>
+  </div>
+  <h1>Robinet<span>.MD</span></h1>
+  <p class="hero-desc">Интернет-магазин сантехники, систем отопления, фильтрации воды и климатической техники для рынка Молдовы. Дизайн и разработка сайта: каталог, поиск, карточки товаров, услуги установки. В футере — авторская подпись «DV.».</p>
+  <div class="hero-tags">
+    <span class="tag a">E-commerce</span><span class="tag a">Дизайн сайта</span><span class="tag a">Разработка</span>
+    <span class="tag">RO</span><span class="tag">Каталог</span><span class="tag">UX</span>
+  </div>
+  <a href="https://robinet.md/" target="_blank" rel="noopener" class="dl-btn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Открыть сайт ↗
+  </a>
+  <div class="hero-divider"></div>
+</div>
+<div class="shot">
+  <div class="ba" id="ba">
+    <img class="ba-after" src="assets/robinet/after-home.png" alt="Robinet.MD — после редизайна">
+    <img class="ba-before" src="assets/robinet/before-home.png" alt="Robinet.MD — до (реконструкция стокового шаблона)">
+    <span class="ba-badge ba-do">ДО</span>
+    <span class="ba-badge ba-posle">ПОСЛЕ</span>
+    <div class="ba-line" id="baLine"></div>
+    <div class="ba-knob" id="baKnob">⟺</div>
+  </div>
+  <figcaption style="font-size:0.74rem;color:var(--text3);padding:0.6rem 0.2rem;">Перетащи ползунок: слева — версия «до», справа — после редизайна. «После» — текущий robinet.md.</figcaption>
+</div>
+
+<div class="works">
+  <div class="works-tabs">
+    <button class="wt active" onclick="showWork('home',this)">Главная</button>
+    <button class="wt" onclick="showWork('services',this)">Услуги (лендинг)</button>
+    <button class="wt" onclick="showWork('catalog',this)">Каталог</button>
+  </div>
+  <div class="browser">
+    <div class="bbar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="u" id="burl">robinet.md</span></div>
+    <div class="bscroll" id="bscroll">
+      <img id="wimg" src="assets/robinet/after-home.png" alt="Robinet.MD — страница после редизайна">
+    </div>
+  </div>
+  <p style="font-size:0.74rem;color:var(--text3);margin-top:0.6rem;">Листай внутри окна — это реальные страницы robinet.md после редизайна. Переключай вкладки: главная, лендинг услуг, каталог.</p>
+</div>
+<script>
+  var W={home:['assets/robinet/after-home.png','robinet.md'],services:['assets/robinet/after-services.png','robinet.md/servicii-de-instalare'],catalog:['assets/robinet/after-catalog.png','robinet.md/catalog']};
+  function showWork(p,btn){ var w=W[p]; document.getElementById('wimg').src=w[0]; document.getElementById('burl').textContent=w[1]; document.getElementById('bscroll').scrollTop=0; document.querySelectorAll('.wt').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+</script>
+<script>
+(function(){
+  var ba=document.getElementById('ba'); if(!ba) return;
+  var line=document.getElementById('baLine'), knob=document.getElementById('baKnob');
+  var before=ba.querySelector('.ba-before')||ba.querySelector('.ba-ph');
+  function set(p){ p=Math.max(0,Math.min(100,p)); before.style.clipPath='inset(0 '+(100-p)+'% 0 0)'; line.style.left=p+'%'; knob.style.left=p+'%'; }
+  function fromEvent(e){ var r=ba.getBoundingClientRect(); set((e.clientX-r.left)/r.width*100); }
+  var drag=false;
+  knob.addEventListener('pointerdown',function(e){ drag=true; try{knob.setPointerCapture(e.pointerId);}catch(_){} e.preventDefault(); });
+  knob.addEventListener('pointermove',function(e){ if(drag) fromEvent(e); });
+  knob.addEventListener('pointerup',function(){ drag=false; });
+  knob.addEventListener('pointercancel',function(){ drag=false; });
+  set(50);
+})();
+</script>
+<div class="layout">
+  <div>
+    <div class="section">
+      <div class="section-title">О проекте</div>
+      <p class="section-text">Robinet.MD — коммерческий интернет-магазин для молдавского рынка: сантехника, отопление, водоподготовка и фильтрация, климат и вентиляция, автоматизация. Моя роль — дизайн и разработка сайта: структура каталога, карточки товаров, поиск, блок услуг установки и общий UX. Сайт живой и работает; в подвале стоит авторская подпись «DV. · design site».</p>
+    </div>
+    <div class="section">
+      <div class="section-title">Что сделано</div>
+      <div class="features">
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="fb"><h4>Каталог и структура</h4><p>Категории (сантехника, отопление, фильтрация, климат, автоматизация), карточки товаров, навигация.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="fb"><h4>Поиск и UX</h4><p>Поиск по товарам, удобные блоки на главной, акценты на акциях и услугах.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div><div class="fb"><h4>Услуги установки</h4><p>Отдельный блок «Servicii de instalare» — сантехника, отопление, тёплый пол и климат под ключ.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fb"><h4>Дизайн и оформление</h4><p>Визуальное оформление магазина под бренд, адаптивная вёрстка, румынский интерфейс.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sct">О проекте</div>
+      <div class="ir"><span class="il">Тип</span><span class="iv">Интернет-магазин</span></div>
+      <div class="ir"><span class="il">Ниша</span><span class="iv">Сантехника / отопление</span></div>
+      <div class="ir"><span class="il">Язык</span><span class="iv">RO</span></div>
+      <div class="ir"><span class="il">Рынок</span><span class="iv">Молдова</span></div>
+      <div class="ir"><span class="il">Статус</span><span class="iv a">● Live</span></div>
+      <div class="ir"><span class="il">Роль</span><span class="iv">Дизайн / разработка</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sct">Ссылка</div>
+      <div class="stack-list" style="padding:1rem 1.25rem;">
+        <a href="https://robinet.md/" target="_blank" rel="noopener" class="st" style="color:var(--accent);background:rgba(200,255,0,0.08);">robinet.md ↗</a>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+window.I18N = {
+  en: {
+    "← Портфолио":"← Portfolio","Сайт · E-commerce":"Website · E-commerce","Клиентский проект · Молдова · RO":"Client project · Moldova · RO",
+    "Интернет-магазин сантехники, систем отопления, фильтрации воды и климатической техники для рынка Молдовы. Дизайн и разработка сайта: каталог, поиск, карточки товаров, услуги установки. В футере — авторская подпись «DV.».":"An online store for plumbing, heating, water filtration and climate equipment for the Moldovan market. Website design and development: catalog, search, product pages, installation services. The footer carries a «DV.» author credit.",
+    "Дизайн сайта":"Site design","Разработка":"Development","Каталог":"Catalog","Открыть сайт ↗":"Open site ↗",
+    "ДО":"BEFORE","ПОСЛЕ":"AFTER",
+    "Перетащи ползунок: слева — версия «до», справа — после редизайна. «После» — текущий robinet.md.":"Drag the handle: left — the «before» version, right — after the redesign. «After» is the current robinet.md.",
+    "Главная":"Home","Услуги (лендинг)":"Services (landing)",
+    "Листай внутри окна — это реальные страницы robinet.md после редизайна. Переключай вкладки: главная, лендинг услуг, каталог.":"Scroll inside the window — these are real robinet.md pages after the redesign. Switch tabs: home, services landing, catalog.",
+    "О проекте":"About the project",
+    "Robinet.MD — коммерческий интернет-магазин для молдавского рынка: сантехника, отопление, водоподготовка и фильтрация, климат и вентиляция, автоматизация. Моя роль — дизайн и разработка сайта: структура каталога, карточки товаров, поиск, блок услуг установки и общий UX. Сайт живой и работает; в подвале стоит авторская подпись «DV. · design site».":"Robinet.MD is a commercial online store for the Moldovan market: plumbing, heating, water treatment and filtration, climate and ventilation, automation. My role — site design and development: catalog structure, product pages, search, the installation-services block and overall UX. The site is live; the footer has a «DV. · design site» author credit.",
+    "Что сделано":"What was done",
+    "Каталог и структура":"Catalog & structure","Категории (сантехника, отопление, фильтрация, климат, автоматизация), карточки товаров, навигация.":"Categories (plumbing, heating, filtration, climate, automation), product pages, navigation.",
+    "Поиск и UX":"Search & UX","Поиск по товарам, удобные блоки на главной, акценты на акциях и услугах.":"Product search, convenient home-page blocks, emphasis on deals and services.",
+    "Услуги установки":"Installation services","Отдельный блок «Servicii de instalare» — сантехника, отопление, тёплый пол и климат под ключ.":"A dedicated «Servicii de instalare» block — plumbing, heating, underfloor heating and climate, turnkey.",
+    "Дизайн и оформление":"Design & styling","Визуальное оформление магазина под бренд, адаптивная вёрстка, румынский интерфейс.":"On-brand visual styling of the store, responsive layout, Romanian interface.",
+    "Тип":"Type","Ниша":"Niche","Язык":"Language","Рынок":"Market","Статус":"Status","Роль":"Role",
+    "Интернет-магазин":"Online store","Сантехника / отопление":"Plumbing / heating","Молдова":"Moldova","Дизайн / разработка":"Design / development","Ссылка":"Link"
+  },
+  zh: {
+    "← Портфолио":"← 作品集","Сайт · E-commerce":"网站 · 电商","Клиентский проект · Молдова · RO":"客户项目 · 摩尔多瓦 · RO",
+    "Интернет-магазин сантехники, систем отопления, фильтрации воды и климатической техники для рынка Молдовы. Дизайн и разработка сайта: каталог, поиск, карточки товаров, услуги установки. В футере — авторская подпись «DV.».":"面向摩尔多瓦市场的卫浴、采暖、水过滤与空调设备网店。网站设计与开发：目录、搜索、商品页、安装服务。页脚带「DV.」作者署名。",
+    "Дизайн сайта":"网站设计","Разработка":"开发","Каталог":"目录","Открыть сайт ↗":"打开网站 ↗",
+    "ДО":"之前","ПОСЛЕ":"之后",
+    "Перетащи ползунок: слева — версия «до», справа — после редизайна. «После» — текущий robinet.md.":"拖动滑块：左侧为「改版前」，右侧为改版后。「之后」即当前的 robinet.md。",
+    "Главная":"首页","Услуги (лендинг)":"服务（落地页）",
+    "Листай внутри окна — это реальные страницы robinet.md после редизайна. Переключай вкладки: главная, лендинг услуг, каталог.":"在窗口内滚动 —— 这些是改版后的真实 robinet.md 页面。切换标签：首页、服务落地页、目录。",
+    "О проекте":"关于项目",
+    "Robinet.MD — коммерческий интернет-магазин для молдавского рынка: сантехника, отопление, водоподготовка и фильтрация, климат и вентиляция, автоматизация. Моя роль — дизайн и разработка сайта: структура каталога, карточки товаров, поиск, блок услуг установки и общий UX. Сайт живой и работает; в подвале стоит авторская подпись «DV. · design site».":"Robinet.MD 是面向摩尔多瓦市场的商业网店：卫浴、采暖、水处理与过滤、空调与通风、自动化。我的职责 —— 网站设计与开发：目录结构、商品页、搜索、安装服务模块与整体 UX。网站已上线；页脚带「DV. · design site」作者署名。",
+    "Что сделано":"已完成",
+    "Каталог и структура":"目录与结构","Категории (сантехника, отопление, фильтрация, климат, автоматизация), карточки товаров, навигация.":"分类（卫浴、采暖、过滤、空调、自动化）、商品页、导航。",
+    "Поиск и UX":"搜索与 UX","Поиск по товарам, удобные блоки на главной, акценты на акциях и услугах.":"商品搜索、首页的实用模块、对促销与服务的强调。",
+    "Услуги установки":"安装服务","Отдельный блок «Servicii de instalare» — сантехника, отопление, тёплый пол и климат под ключ.":"独立的「Servicii de instalare」模块 —— 卫浴、采暖、地暖与空调，交钥匙服务。",
+    "Дизайн и оформление":"设计与视觉","Визуальное оформление магазина под бренд, адаптивная вёрстка, румынский интерфейс.":"贴合品牌的店铺视觉、响应式布局、罗马尼亚语界面。",
+    "Тип":"类型","Ниша":"领域","Язык":"语言","Рынок":"市场","Статус":"状态","Роль":"角色",
+    "Интернет-магазин":"网店","Сантехника / отопление":"卫浴 / 采暖","Молдова":"摩尔多瓦","Дизайн / разработка":"设计 / 开发","Ссылка":"链接"
+  },
+  h: {}
+};
+</script>
+<script src="assets/i18n.js"></script>
+</body>
+</html>

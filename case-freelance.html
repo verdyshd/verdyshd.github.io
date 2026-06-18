@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Freelance Agent — портфолио</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg:#0d0d0d;--bg2:#161616;--bg3:#1f1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0ede8;--text2:#999;--text3:#666;--accent:#c8ff00; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6; }
+  h1,h2,h3 { font-family:'Syne',sans-serif; }
+  a { color:inherit;text-decoration:none; }
+  .topbar { position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center; }
+  .nav-logo { font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em; }
+  .nav-logo span { color:var(--accent); }
+  .back-btn { font-size:0.85rem;color:var(--text2);font-family:'Syne',sans-serif;font-weight:600;transition:color 0.2s; }
+  .back-btn:hover { color:var(--accent); }
+  .hero { max-width:980px;margin:0 auto;padding:4rem 2rem 0; }
+  .hero-top { display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem; }
+  .project-icon { width:64px;height:64px;border-radius:14px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .hero h1 { font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem; }
+  .hero h1 span { color:var(--accent); }
+  .hero-desc { font-size:1rem;color:var(--text2);max-width:660px;line-height:1.75;margin-bottom:2rem; }
+  .hero-tags { display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem; }
+  .tag { padding:0.35rem 0.9rem;border:1px solid var(--border2);border-radius:100px;font-size:0.78rem;color:var(--text2); }
+  .tag.a { border-color:rgba(200,255,0,0.3);color:var(--accent);background:rgba(200,255,0,0.05); }
+  .dl-btn { display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--accent);color:#0d0d0d;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.875rem;transition:all 0.2s;margin-bottom:2.5rem; }
+  .dl-btn:hover { background:#a8d900;transform:translateY(-1px); }
+  .hero-divider { height:1px;background:var(--border);margin-bottom:3rem; }
+  .layout { max-width:980px;margin:0 auto;padding:0 2rem 5rem;display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start; }
+  @media(max-width:768px){.layout{grid-template-columns:1fr}.topbar,.hero{padding-left:1.25rem;padding-right:1.25rem}.layout{padding:0 1.25rem 4rem}}
+  .section { margin-bottom:2.5rem; }
+  .section-title { font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12); }
+  .section-text { font-size:0.92rem;color:var(--text2);line-height:1.75; }
+  .features { display:flex;flex-direction:column;gap:0.85rem; }
+  .feature { display:flex;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;transition:border-color 0.2s; }
+  .feature:hover { border-color:var(--border2); }
+  .fi { width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+  .fb h4 { font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;margin-bottom:0.25rem; }
+  .fb p { font-size:0.82rem;color:var(--text2);line-height:1.6; }
+  .pipeline { background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;font-size:0.85rem;line-height:1.9;color:var(--text2); }
+  .pipeline .accent { color:var(--accent);font-weight:600; }
+  .sidebar-card { background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem; }
+  .sct { font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);padding:1rem 1.25rem 0;margin-bottom:0.75rem; }
+  .ir { display:flex;justify-content:space-between;align-items:center;padding:0.6rem 1.25rem;border-top:1px solid var(--border);font-size:0.83rem; }
+  .ir:first-of-type { border-top:none; }
+  .il { color:var(--text3); }
+  .iv { color:var(--text);font-weight:500; }
+  .iv.a { color:var(--accent); }
+  .stack-list { padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem; }
+  .st { padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2); }
+  .sidebar { position:sticky;top:80px; }
+  .secret-note { display:flex;gap:0.75rem;padding:1rem 1.25rem;background:rgba(200,255,0,0.04);border:1px solid rgba(200,255,0,0.15);border-radius:12px;font-size:0.82rem;color:var(--text2);line-height:1.6;margin-top:1rem; }
+  .secret-note svg { flex-shrink:0;margin-top:2px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="portfolio.html" class="back-btn">← Портфолио</a>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
+    <div class="nav-logo">DV<span>.</span></div>
+  </div>
+</div>
+<div class="hero">
+  <div class="hero-top">
+    <div class="project-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="16" y1="15" x2="16" y2="15.01"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;">Продукт · Инди-разработка</div>
+      <div style="font-size:0.82rem;color:var(--text3);">FAS · MVP · Telegram Bot + AI Pipeline</div>
+    </div>
+  </div>
+  <h1>AI Freelance <span>Agent</span> <span style="color:var(--text3);-webkit-text-fill-color:var(--text3);font-size:0.45em;font-weight:600;letter-spacing:0;">FAS</span></h1>
+  <p class="hero-desc">MVP системы автоматической обработки фриланс-заявок. Телеграм-бот принимает описание вакансии, AI-агент анализирует, оценивает и генерирует отклик — пользователь только одобряет или редактирует результат.</p>
+  <div class="hero-tags">
+    <span class="tag a">Python</span><span class="tag a">Telegram Bot</span><span class="tag a">AI Pipeline</span>
+    <span class="tag">SQLite</span><span class="tag">SQLAlchemy</span><span class="tag">Writer Agent</span>
+    <span class="tag">Critic Agent</span><span class="tag">Scorer</span><span class="tag">Ollama</span>
+  </div>
+  <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.3rem;border:1px solid var(--border2);border-radius:100px;color:var(--text2);font-size:0.85rem;margin-bottom:2.5rem;">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Проект для ознакомления — исходники не распространяются
+  </div>
+  <div class="hero-divider"></div>
+</div>
+<div class="layout">
+  <div>
+    <div class="section">
+      <div class="section-title">Как работает</div>
+      <div class="pipeline">
+        <div><span class="accent">1.</span> Пользователь вводит /newjob → вставляет текст вакансии</div>
+        <div><span class="accent">2.</span> Normalizer нормализует и структурирует данные</div>
+        <div><span class="accent">3.</span> Scorer оценивает совместимость (0–100)</div>
+        <div><span class="accent">4.</span> Strategy выбирает тактику отклика</div>
+        <div><span class="accent">5.</span> Writer Agent генерирует персонализированный отклик</div>
+        <div><span class="accent">6.</span> Critic Agent проверяет и улучшает качество</div>
+        <div><span class="accent">7.</span> Бот показывает результат с кнопками: одобрить / редактировать / пропустить</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Ключевые системы</div>
+      <div class="features">
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="fb"><h4>Telegram Bot UI</h4><p>Полноценный интерфейс в Telegram с inline-кнопками, FSM состояниями и форматированными сообщениями. Команды: /start, /newjob, /jobs, /profile, /mode.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="fb"><h4>Writer + Critic Pipeline</h4><p>Двухэтапная генерация: Writer создаёт отклик, Critic оценивает и предлагает улучшения. Итеративная доработка до приемлемого качества.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="fb"><h4>Scoring Engine</h4><p>Движок оценки совместимости вакансии с профилем пользователя. Учитывает навыки, опыт, предпочтения по ставке и типу занятости.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="fb"><h4>SQLite + SQLAlchemy</h4><p>Постоянное хранение вакансий, откликов, профиля и истории. Полноценные ORM-модели с репозиторием.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div><div class="fb"><h4>4 AI режима</h4><p>template (без AI), openai, ollama (локально), manual_chat (промпт готовится ботом, ты вставляешь в любой чат AI).</p></div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Интерфейс</div>
+      <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+        <img src="assets/freelance/telegram-chat.png" alt="FASbot — чат в Telegram" loading="lazy" style="width:100%;display:block;">
+        <figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;line-height:1.5;">Бот в Telegram: профиль фрилансера, автопоиск каналов, мониторинг и карточка найденного заказа со score и готовым откликом</figcaption>
+      </figure>
+    </div>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sct">О проекте</div>
+      <div class="ir"><span class="il">Тип</span><span class="iv">Telegram Bot + API</span></div>
+      <div class="ir"><span class="il">Платформа</span><span class="iv">Windows / Linux / Mac</span></div>
+      <div class="ir"><span class="il">AI режимы</span><span class="iv accent">4 варианта</span></div>
+      <div class="ir"><span class="il">Статус</span><span class="iv">MVP готов</span></div>
+      <div class="ir"><span class="il">Роль</span><span class="iv">Автор / разработчик</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sct">Стек</div>
+      <div class="stack-list">
+        <span class="st">Python 3</span><span class="st">aiogram</span><span class="st">SQLAlchemy</span>
+        <span class="st">SQLite</span><span class="st">OpenAI API</span><span class="st">Ollama</span>
+        <span class="st">Pydantic</span>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+window.I18N = {
+  en: {
+    "О проекте":"About the project",
+    "Интерфейс":"Interface",
+    "Бот в Telegram: профиль фрилансера, автопоиск каналов, мониторинг и карточка найденного заказа со score и готовым откликом":"The Telegram bot: freelancer profile, channel auto-discovery, monitoring, and a found-job card with a score and a ready-to-send proposal",
+    "← Портфолио":"← Portfolio","Продукт · Инди-разработка":"Product · Indie dev",
+    "Проект для ознакомления — исходники не распространяются":"For reference only — sources are not distributed",
+    "MVP системы автоматической обработки фриланс-заявок. Телеграм-бот принимает описание вакансии, AI-агент анализирует, оценивает и генерирует отклик — пользователь только одобряет или редактирует результат.":"An MVP that auto-handles freelance leads. A Telegram bot takes a job description; the AI agent analyzes, scores and generates a reply — the user just approves or edits the result.",
+    "Как работает":"How it works",
+    "Пользователь вводит /newjob → вставляет текст вакансии":"The user types /newjob → pastes the job text",
+    "Normalizer нормализует и структурирует данные":"Normalizer cleans and structures the data",
+    "Scorer оценивает совместимость (0–100)":"Scorer rates the fit (0–100)",
+    "Strategy выбирает тактику отклика":"Strategy picks the reply tactic",
+    "Writer Agent генерирует персонализированный отклик":"Writer Agent generates a personalized reply",
+    "Critic Agent проверяет и улучшает качество":"Critic Agent checks and improves quality",
+    "Бот показывает результат с кнопками: одобрить / редактировать / пропустить":"The bot shows the result with buttons: approve / edit / skip",
+    "Ключевые системы":"Key systems",
+    "Полноценный интерфейс в Telegram с inline-кнопками, FSM состояниями и форматированными сообщениями. Команды: /start, /newjob, /jobs, /profile, /mode.":"A full Telegram interface with inline buttons, FSM states and formatted messages. Commands: /start, /newjob, /jobs, /profile, /mode.",
+    "Двухэтапная генерация: Writer создаёт отклик, Critic оценивает и предлагает улучшения. Итеративная доработка до приемлемого качества.":"Two-stage generation: Writer drafts the reply, Critic scores it and suggests improvements. Iterative refinement to acceptable quality.",
+    "Движок оценки совместимости вакансии с профилем пользователя. Учитывает навыки, опыт, предпочтения по ставке и типу занятости.":"An engine that scores how well a job fits the user's profile. Considers skills, experience, rate and employment-type preferences.",
+    "Постоянное хранение вакансий, откликов, профиля и истории. Полноценные ORM-модели с репозиторием.":"Persistent storage of jobs, replies, profile and history. Full ORM models with a repository.",
+    "4 AI режима":"4 AI modes","template (без AI), openai, ollama (локально), manual_chat (промпт готовится ботом, ты вставляешь в любой чат AI).":"template (no AI), openai, ollama (local), manual_chat (the bot prepares the prompt, you paste it into any AI chat).",
+    "Тип":"Type","Платформа":"Platform","AI режимы":"AI modes","Статус":"Status","Роль":"Role",
+    "4 варианта":"4 options","MVP готов":"MVP ready","Автор / разработчик":"Author / developer","Стек":"Stack"
+  },
+  zh: {
+    "О проекте":"关于项目",
+    "Интерфейс":"界面",
+    "Бот в Telegram: профиль фрилансера, автопоиск каналов, мониторинг и карточка найденного заказа со score и готовым откликом":"Telegram 机器人：自由职业者档案、频道自动发现、监控，以及带评分和现成投标的订单卡片",
+    "← Портфолио":"← 作品集","Продукт · Инди-разработка":"产品 · 独立开发",
+    "Проект для ознакомления — исходники не распространяются":"仅供了解 —— 不分发源码",
+    "MVP системы автоматической обработки фриланс-заявок. Телеграм-бот принимает описание вакансии, AI-агент анализирует, оценивает и генерирует отклик — пользователь только одобряет или редактирует результат.":"自动处理自由职业需求的 MVP。Telegram 机器人接收职位描述，AI 智能体分析、评分并生成回复 —— 用户只需批准或编辑结果。",
+    "Как работает":"工作原理",
+    "Пользователь вводит /newjob → вставляет текст вакансии":"用户输入 /newjob → 粘贴职位文本",
+    "Normalizer нормализует и структурирует данные":"Normalizer 清洗并结构化数据",
+    "Scorer оценивает совместимость (0–100)":"Scorer 评估匹配度（0–100）",
+    "Strategy выбирает тактику отклика":"Strategy 选择回复策略",
+    "Writer Agent генерирует персонализированный отклик":"Writer Agent 生成个性化回复",
+    "Critic Agent проверяет и улучшает качество":"Critic Agent 校验并提升质量",
+    "Бот показывает результат с кнопками: одобрить / редактировать / пропустить":"机器人展示结果并提供按钮：批准 / 编辑 / 跳过",
+    "Ключевые системы":"核心系统",
+    "Полноценный интерфейс в Telegram с inline-кнопками, FSM состояниями и форматированными сообщениями. Команды: /start, /newjob, /jobs, /profile, /mode.":"完整的 Telegram 界面：内联按钮、FSM 状态与格式化消息。命令：/start、/newjob、/jobs、/profile、/mode。",
+    "Двухэтапная генерация: Writer создаёт отклик, Critic оценивает и предлагает улучшения. Итеративная доработка до приемлемого качества.":"两阶段生成：Writer 起草回复，Critic 评分并提出改进。迭代优化至可接受质量。",
+    "Движок оценки совместимости вакансии с профилем пользователя. Учитывает навыки, опыт, предпочтения по ставке и типу занятости.":"评估职位与用户档案匹配度的引擎。考虑技能、经验、费率与用工类型偏好。",
+    "Постоянное хранение вакансий, откликов, профиля и истории. Полноценные ORM-модели с репозиторием.":"持久化存储职位、回复、档案与历史。完整的 ORM 模型与仓储层。",
+    "4 AI режима":"4 种 AI 模式","template (без AI), openai, ollama (локально), manual_chat (промпт готовится ботом, ты вставляешь в любой чат AI).":"template（无 AI）、openai、ollama（本地）、manual_chat（机器人准备提示词，你粘贴到任意 AI 聊天）。",
+    "Тип":"类型","Платформа":"平台","AI режимы":"AI 模式","Статус":"状态","Роль":"角色",
+    "4 варианта":"4 种","MVP готов":"MVP 就绪","Автор / разработчик":"作者 / 开发者","Стек":"技术栈"
+  },
+  h: {}
+};
+</script>
+<script src="assets/i18n.js"></script>
+</body>
+</html>

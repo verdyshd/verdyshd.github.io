@@ -41,6 +41,12 @@
     transition: all 0.2s; cursor: pointer; border: none;
   }
   .download-btn:hover { background: #a8d900; transform: translateY(-1px); }
+  .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+  .lang-switch { display: flex; gap: 1px; border: 1px solid var(--border2); border-radius: 100px; padding: 2px; }
+  .lang-btn { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.72rem; color: var(--text3); background: transparent; border: none; border-radius: 100px; padding: 0.3rem 0.55rem; cursor: pointer; transition: all 0.15s; line-height: 1; }
+  .lang-btn:hover { color: var(--text); }
+  .lang-btn.active { background: var(--accent); color: var(--bg); }
+  @media print { .lang-switch { display: none; } }
 
   /* LAYOUT */
   .cv-wrap { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 5rem; }
@@ -138,10 +144,17 @@
     <a href="index.html" class="back-btn">← Назад</a>
     <span class="topbar-title">Резюме · Вердыш Дмитрий</span>
   </div>
-  <button class="download-btn" onclick="window.print()">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Скачать PDF
-  </button>
+  <div class="topbar-right">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+    </div>
+    <button class="download-btn" onclick="window.print()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Скачать PDF
+    </button>
+  </div>
 </div>
 
 <div class="cv-wrap">
@@ -317,5 +330,74 @@
   </div>
 
 </div>
+<script>
+const I18N = {
+  en: {
+    "← Назад":"← Back","Резюме · Вердыш Дмитрий":"Resume · Вердыш Дмитрий","Скачать PDF":"Download PDF",
+    "Digital-маркетолог · Веб-разработчик · Инди-создатель":"Digital marketer · Web developer · Indie maker",
+    "Кишинев, Молдова":"Chisinau, Moldova","Telegram (приоритет)":"Telegram (priority)",
+    "Обо мне":"About",
+    "Специалист на стыке digital-маркетинга, веб-разработки и создания продуктов. Настраиваю и веду рекламные кампании, занимаюсь SEO, монтирую видео и разрабатываю сайты. В свободное время развиваюсь как инди-разработчик — создаю ботов, медиа-конвейеры и инструменты с элементами машинного обучения. Быстро обучаюсь, работаю аккуратно и в срок.":"A specialist where digital marketing, web development and product-building meet. I set up and run ad campaigns, do SEO, edit video and build websites. In my own time I grow as an indie developer — building bots, media pipelines and tools with machine-learning elements. I learn fast and work accurately and on time.",
+    "Опыт работы":"Work experience",
+    "SC Stafolet SRL · Кишинев":"SC Stafolet SRL · Chisinau","Digital-маркетолог / E-commerce специалист":"Digital marketer / E-commerce specialist","Декабрь 2025 — настоящее время":"December 2025 — present",
+    "Настройка и ведение рекламных кампаний (performance-маркетинг)":"Setup and management of ad campaigns (performance marketing)","SEO-оптимизация и продвижение сайта":"SEO optimization and site promotion","Анализ рынка и конкурентной среды":"Market and competitor analysis","Формирование ценовой политики и расчёт окупаемости":"Pricing policy and ROI calculation","Работа с карточками товаров (контент, структура, оптимизация)":"Product pages (content, structure, optimization)","Разработка баннеров и визуального оформления":"Banner and visual design","UX-улучшения сайта в рамках шаблона":"UX improvements within the template","Работа с 1С (ведение и обновление товарной базы)":"1C (maintaining and updating the product database)","Создание аналитических таблиц и отчётности":"Building analytics spreadsheets and reporting","Внедрение и использование AI-инструментов в работе":"Adopting and using AI tools at work",
+    "Частная организация · Кишинев":"Private company · Chisinau","Офис-менеджер / Административный специалист":"Office manager / Administrative specialist","Май 2023 — Ноябрь 2025":"May 2023 — November 2025",
+    "Ведение документооборота и архива":"Document flow and archive management","Подготовка и редактирование юридической документации":"Preparing and editing legal documents","Протоколирование совещаний":"Taking meeting minutes","Финансовый учёт (внутренние выплаты, контроль расчётов)":"Financial records (internal payments, settlement control)","Деловая переписка и переводы":"Business correspondence and translation","Контроль организационных процессов и мероприятий":"Overseeing organizational processes and events","Документооборот":"Document management",
+    "Менеджер по работе с клиентами / Лидогенерация":"Account manager / Lead generation","Май 2023 — Сентябрь 2023":"May 2023 — September 2023",
+    "Холодные звонки и привлечение клиентов":"Cold calls and client acquisition","Ведение клиентской базы в CRM":"Maintaining the client base in CRM","Поиск перевозчиков и координация сторон":"Finding carriers and coordinating parties","Сопровождение клиентов до завершения услуги":"Supporting clients until service completion","Лидогенерация":"Lead generation","Аналитика конверсии":"Conversion analytics",
+    "Навыки":"Skills","Маркетинг":"Marketing","Разработка & дизайн":"Development & design","Видео & контент":"Video & content","Продукты & AI":"Products & AI",
+    "Видеомонтаж":"Video editing","Цветокоррекция":"Color grading","Баннеры":"Banners","Боты":"Bots","AI-инструменты":"AI tools",
+    "Образование":"Education","Информационные системы и технологии в бизнесе":"Information systems and technologies in business","В процессе":"In progress","Лицей «Светоч»":"Svetoch Lyceum","Среднее образование":"Secondary education",
+    "Языки":"Languages","Русский":"Russian","Родной":"Native","Английский":"English","Базовый":"Basic"
+  },
+  zh: {
+    "← Назад":"← 返回","Резюме · Вердыш Дмитрий":"简历 · Вердыш Дмитрий","Скачать PDF":"下载 PDF",
+    "Digital-маркетолог · Веб-разработчик · Инди-создатель":"数字营销 · 网页开发 · 独立创造者",
+    "Кишинев, Молдова":"摩尔多瓦，基希讷乌","Telegram (приоритет)":"Telegram（优先）",
+    "Обо мне":"关于我",
+    "Специалист на стыке digital-маркетинга, веб-разработки и создания продуктов. Настраиваю и веду рекламные кампании, занимаюсь SEO, монтирую видео и разрабатываю сайты. В свободное время развиваюсь как инди-разработчик — создаю ботов, медиа-конвейеры и инструменты с элементами машинного обучения. Быстро обучаюсь, работаю аккуратно и в срок.":"横跨数字营销、网页开发与产品打造的多面手。我配置并投放广告、做 SEO、剪辑视频并开发网站。业余时间作为独立开发者持续成长 —— 打造机器人、媒体流水线与含机器学习元素的工具。学习快，工作严谨、按时交付。",
+    "Опыт работы":"工作经历",
+    "SC Stafolet SRL · Кишинев":"SC Stafolet SRL · 基希讷乌","Digital-маркетолог / E-commerce специалист":"数字营销 / 电商专员","Декабрь 2025 — настоящее время":"2025年12月 — 至今",
+    "Настройка и ведение рекламных кампаний (performance-маркетинг)":"配置并投放广告活动（效果营销）","SEO-оптимизация и продвижение сайта":"SEO 优化与网站推广","Анализ рынка и конкурентной среды":"市场与竞争分析","Формирование ценовой политики и расчёт окупаемости":"制定定价策略并核算投资回报","Работа с карточками товаров (контент, структура, оптимизация)":"商品页（内容、结构、优化）","Разработка баннеров и визуального оформления":"横幅与视觉设计","UX-улучшения сайта в рамках шаблона":"在模板范围内改进网站 UX","Работа с 1С (ведение и обновление товарной базы)":"使用 1C（维护与更新商品库）","Создание аналитических таблиц и отчётности":"制作数据分析表与报表","Внедрение и использование AI-инструментов в работе":"在工作中引入并使用 AI 工具",
+    "Частная организация · Кишинев":"私营机构 · 基希讷乌","Офис-менеджер / Административный специалист":"办公室经理 / 行政专员","Май 2023 — Ноябрь 2025":"2023年5月 — 2025年11月",
+    "Ведение документооборота и архива":"管理文档流转与档案","Подготовка и редактирование юридической документации":"准备与编辑法律文件","Протоколирование совещаний":"会议记录","Финансовый учёт (внутренние выплаты, контроль расчётов)":"财务记账（内部付款、结算管控）","Деловая переписка и переводы":"商务往来与翻译","Контроль организационных процессов и мероприятий":"监督组织流程与活动","Документооборот":"文档管理",
+    "Менеджер по работе с клиентами / Лидогенерация":"客户经理 / 获客","Май 2023 — Сентябрь 2023":"2023年5月 — 9月",
+    "Холодные звонки и привлечение клиентов":"陌生电话与客户开发","Ведение клиентской базы в CRM":"在 CRM 中维护客户库","Поиск перевозчиков и координация сторон":"寻找承运商并协调各方","Сопровождение клиентов до завершения услуги":"跟进客户直至服务完成","Лидогенерация":"获客","Аналитика конверсии":"转化分析",
+    "Навыки":"技能","Маркетинг":"营销","Разработка & дизайн":"开发与设计","Видео & контент":"视频与内容","Продукты & AI":"产品与 AI",
+    "Видеомонтаж":"视频剪辑","Цветокоррекция":"调色","Баннеры":"横幅","Боты":"机器人","AI-инструменты":"AI 工具",
+    "Образование":"教育","Информационные системы и технологии в бизнесе":"商业信息系统与技术","В процессе":"进行中","Лицей «Светоч»":"«Светоч» 中学","Среднее образование":"中学教育",
+    "Языки":"语言","Русский":"俄语","Родной":"母语","Английский":"英语","Базовый":"基础"
+  },
+  h: {}
+};
+let _i18nNodes = null;
+function _i18nCollect(){
+  _i18nNodes = [];
+  const skipTag = {SCRIPT:1,STYLE:1,NOSCRIPT:1};
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      if(!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      for(let p=n.parentElement; p; p=p.parentElement){
+        if(skipTag[p.tagName] || p.classList.contains('lang-switch') || p.hasAttribute('data-i18nh')) return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  let n; while(n = w.nextNode()) _i18nNodes.push({node:n, ru:n.nodeValue});
+}
+function setLang(lang){
+  if(!_i18nNodes) _i18nCollect();
+  for(const it of _i18nNodes){
+    if(lang === 'ru'){ it.node.nodeValue = it.ru; continue; }
+    const key = it.ru.trim();
+    const t = I18N[lang][key];
+    it.node.nodeValue = (t != null) ? it.ru.replace(key, t) : it.ru;
+  }
+  document.documentElement.lang = (lang === 'zh') ? 'zh-Hans' : lang;
+  try { localStorage.setItem('lang', lang); } catch(e){}
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang === lang));
+}
+(function(){ let s='ru'; try{ s = localStorage.getItem('lang') || 'ru'; }catch(e){} setLang(s); })();
+</script>
 </body>
 </html>

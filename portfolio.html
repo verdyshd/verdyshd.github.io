@@ -43,8 +43,9 @@
   /* FILTERS */
   .filters-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 0; }
   .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .filter-btn { padding: 0.45rem 1.1rem; border: 1px solid var(--border2); border-radius: 100px; font-size: 0.8rem; color: var(--text2); background: transparent; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
-  .filter-btn:hover, .filter-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(200,255,0,0.06); }
+  .filter-btn { padding: 0.5rem 1.2rem; border: 1px solid var(--border); border-radius: 100px; font-size: 0.82rem; color: var(--text2); background: var(--bg2); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.18s; white-space: nowrap; }
+  .filter-btn:hover { color: var(--text); border-color: var(--border2); background: var(--bg3); }
+  .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 500; }
 
   /* GRID */
   .grid-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 5rem; }
@@ -88,116 +89,151 @@
     <a href="index.html" class="back-btn">← Назад</a>
     <div class="nav-logo">DV<span>.</span></div>
   </div>
+  <div class="lang-switch">
+    <button class="lang-btn" data-lang="ru">RU</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="zh">中文</button>
+  </div>
 </div>
 
 <div class="page-hero">
   <div class="label">Примеры работ</div>
-  <h1>Порт<span>фолио</span></h1>
-  <p>Проекты по маркетингу, разработке, видео и собственным продуктам. Некоторые ещё в процессе.</p>
+  <h1 data-i18nh="pf">Порт<span>фолио</span></h1>
+  <p>Собственные продукты и разработки: AI-агенты, автоматизация и контент-проекты. Некоторые ещё в процессе.</p>
 </div>
 
 <div class="filters-wrap">
   <div class="filters">
-    <button class="filter-btn active" onclick="filter('all',this)">Все</button>
-    <button class="filter-btn" onclick="filter('marketing',this)">Маркетинг</button>
-    <button class="filter-btn" onclick="filter('dev',this)">Разработка</button>
-    <button class="filter-btn" onclick="filter('video',this)">Видео</button>
-    <button class="filter-btn" onclick="filter('product',this)">Продукты</button>
+    <button class="filter-btn active" onclick="filter('ai',this)">AI</button>
+    <button class="filter-btn" onclick="filter('automation',this)">Автоматизация</button>
+    <button class="filter-btn" onclick="filter('web',this)">Сайты</button>
+    <button class="filter-btn" onclick="filter('seo',this)">SEO / Контент</button>
+    <button class="filter-btn" onclick="filter('all',this)">Все</button>
   </div>
 </div>
 
 <div class="grid-wrap">
   <div class="portfolio-grid" id="grid">
 
-    <div class="card" data-cat="marketing">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#0a1f14,#0f3020);">
-        <div class="card-thumb-bg">SEO</div>
-        <div class="card-thumb-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-      </div>
-      <div class="card-body">
-        <div><span class="card-cat">Маркетинг · SEO</span></div>
-        <div class="card-title">SEO-продвижение интернет-магазина</div>
-        <div class="card-desc">Оптимизация карточек товаров, семантическое ядро, работа с метатегами и структурой сайта. Рост органического трафика.</div>
-        <div class="card-tags"><span class="card-tag">SEO</span><span class="card-tag">E-commerce</span><span class="card-tag">Stafolet</span></div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="marketing">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#120a20,#1e0f35);">
-        <div class="card-thumb-bg">ADS</div>
-        <div class="card-thumb-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-      </div>
-      <div class="card-body">
-        <div><span class="card-cat">Маркетинг · Реклама</span></div>
-        <div class="card-title">Рекламные кампании Meta & Google</div>
-        <div class="card-desc">Настройка и ведение performance-кампаний, A/B тестирование креативов, оптимизация CPA и ROI.</div>
-        <div class="card-tags"><span class="card-tag">Meta Ads</span><span class="card-tag">Google Ads</span><span class="card-tag">Performance</span></div>
-      </div>
-    </div>
-
-    <div class="card" data-cat="dev">
+    <a class="card" data-cat="ai" href="case-freepalp.html" style="display:block;">
       <div class="card-thumb" style="background:linear-gradient(135deg,#0a1a0a,#0f2a14);">
-        <div class="card-thumb-bg">WEB</div>
+        <div class="card-thumb-bg">AI</div>
         <div class="card-thumb-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><circle cx="19" cy="5" r="3" fill="#c8ff00" stroke="none"/></svg>
         </div>
       </div>
       <div class="card-body">
-        <div><span class="card-cat">Разработка · Сайты</span></div>
-        <div class="card-title">Разработка и доработка веб-сайтов</div>
-        <div class="card-desc">Создание лендингов, доработка шаблонов, UX-улучшения, адаптивная вёрстка на HTML/CSS/JS.</div>
-        <div class="card-tags"><span class="card-tag">HTML/CSS</span><span class="card-tag">JavaScript</span><span class="card-tag">UX</span></div>
+        <div><span class="card-cat">Продукт · Инди-разработка</span></div>
+        <div class="card-title">FreePalp — мульти-агентная AI-система</div>
+        <div class="card-desc">Multi-agent AI с самокоррекцией, ReAct-loop и автономным использованием инструментов: агент сам планирует, вызывает инструменты, проверяет качество и повторяет. 10+ провайдеров, 41 инструмент.</div>
+        <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">Multi-Agent</span><span class="card-tag">ReAct</span><span class="card-tag">Self-Improvement</span></div>
       </div>
-    </div>
+    </a>
 
-    <div class="card" data-cat="video">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#1a0a0a,#2a1010);">
-        <div class="card-thumb-bg">VID</div>
-        <div class="card-thumb-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-        </div>
-      </div>
-      <div class="card-body">
-        <div><span class="card-cat">Видео · Монтаж</span></div>
-        <div class="card-title">Монтаж и редактирование видео</div>
-        <div class="card-desc">Монтаж рекламных роликов, контент для соцсетей, цветокоррекция, motion-графика и субтитры.</div>
-        <div class="card-tags"><span class="card-tag">Монтаж</span><span class="card-tag">Цветокоррекция</span><span class="card-tag">Reels / Shorts</span></div>
-      </div>
-    </div>
-
-    <div class="card wip" data-cat="product">
+    <a class="card" data-cat="ai" href="case-deepbridge.html" style="display:block;">
       <div class="card-thumb" style="background:linear-gradient(135deg,#0a1020,#0f1a30);">
+        <div class="card-thumb-bg">DB</div>
+        <div class="card-thumb-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8l3 3-3 3"/><line x1="13" y1="11" x2="17" y2="11"/></svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div><span class="card-cat">Продукт · AI Bridge</span></div>
+        <div class="card-title">DeepBridge <span style="color:var(--text3);font-weight:400;font-size:0.85rem;">(ex-AIOSE)</span></div>
+        <div class="card-desc">Локальный мост: браузерный DeepSeek → полноценный AI-агент с доступом к файловой системе, shell и браузеру (CDP). Линейка: DeepGate (убран) → DeepBridge (рабочий прототип).</div>
+        <div class="card-tags"><span class="card-tag">Python</span><span class="card-tag">Flask</span><span class="card-tag">Playwright</span><span class="card-tag">CDP</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="ai" href="case-freelance.html" style="display:block;">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#120a20,#1e0f35);">
         <div class="card-thumb-bg">BOT</div>
         <div class="card-thumb-icon">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="15" x2="8" y2="15.01"/><line x1="16" y1="15" x2="16" y2="15.01"/></svg>
         </div>
       </div>
       <div class="card-body">
-        <div><span class="card-cat">Продукт</span><span class="card-wip">· в разработке</span></div>
-        <div class="card-title">Телеграм-боты и автоматизация</div>
-        <div class="card-desc">Боты для автоматизации задач: уведомления, сбор данных, интеграции с внешними API.</div>
-        <div class="card-tags"><span class="card-tag">Telegram API</span><span class="card-tag">Автоматизация</span><span class="card-tag">Инди</span></div>
+        <div><span class="card-cat">Продукт · MVP</span></div>
+        <div class="card-title">AI Freelance Agent <span style="color:var(--text3);font-weight:400;font-size:0.8rem;">FAS</span></div>
+        <div class="card-desc">Телеграм-бот для обработки фриланс-заявок: AI анализирует вакансию, оценивает совместимость и генерирует отклик через Writer + Critic pipeline.</div>
+        <div class="card-tags"><span class="card-tag">Telegram</span><span class="card-tag">AI Pipeline</span><span class="card-tag">SQLite</span></div>
       </div>
-    </div>
+    </a>
 
-    <div class="card wip" data-cat="product">
-      <div class="card-thumb" style="background:linear-gradient(135deg,#141a0a,#202a0f);">
-        <div class="card-thumb-bg">ML</div>
+    <a class="card" data-cat="automation" href="portfolio-cartum-preview.html" style="display:block;">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#1a0a0a,#2a1010);">
+        <div class="card-thumb-bg">DEP</div>
         <div class="card-thumb-icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.04Z"/></svg>
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
       </div>
       <div class="card-body">
-        <div><span class="card-cat">Продукт</span><span class="card-wip">· в разработке</span></div>
-        <div class="card-title">Медиа-конвейеры & ML</div>
-        <div class="card-desc">Автоматическая обработка медиа, загрузка кода, внедрение машинного обучения в пайплайны.</div>
-        <div class="card-tags"><span class="card-tag">Machine Learning</span><span class="card-tag">Pipeline</span><span class="card-tag">Инди</span></div>
+        <div><span class="card-cat">Разработка · Утилита</span></div>
+        <div class="card-title">Cartum Control Center</div>
+        <div class="card-desc">Настольная утилита автоматизации деплоя для платформы Cartum / Horoshop. Загрузка CSS, JS и HTML одной кнопкой, сохранение авторизации и резервные копии.</div>
+        <div class="card-tags"><span class="card-tag">Desktop</span><span class="card-tag">Cartum</span><span class="card-tag">Automation</span></div>
       </div>
-    </div>
+    </a>
+
+    <a class="card" data-cat="seo" href="case-nexura.html" style="display:block;">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0a1410,#0f2a22);">
+        <div class="card-thumb-bg">NX</div>
+        <div class="card-thumb-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div><span class="card-cat">Продукт · SEO / Контент</span></div>
+        <div class="card-title">Nexura — нишевое издание</div>
+        <div class="card-desc">Статический контент-сайт для Молдовы на Astro (RU/RO): гайды и сравнения техники. 18 статей, Lighthouse 99/100, авто-деплой на Cloudflare Pages. MVP для проверки SEO-гипотезы.</div>
+        <div class="card-tags"><span class="card-tag">Astro</span><span class="card-tag">SEO</span><span class="card-tag">Cloudflare</span><span class="card-tag">RU/RO</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="ai" href="case-autocad-ai.html" style="display:block;">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#1a140a,#2a200f);">
+        <div class="card-thumb-bg">CAD</div>
+        <div class="card-thumb-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div><span class="card-cat">Продукт · AI + CAD · закрытый</span></div>
+        <div class="card-title">AutoCAD AI</div>
+        <div class="card-desc">Создание чертежей высокой сложности по одному текстовому промту — без ручной трассировки. Фокус на самых трудозатратных чертежах. Закрытая разработка.</div>
+        <div class="card-tags"><span class="card-tag">AI</span><span class="card-tag">AutoCAD</span><span class="card-tag">Prompt-to-CAD</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="automation" href="case-amp.html" style="display:block;">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#140a1a,#22102a);">
+        <div class="card-thumb-bg">AMP</div>
+        <div class="card-thumb-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div><span class="card-cat">Продукт · Закрытый</span></div>
+        <div class="card-title">AMP — Auto Media Pipeline</div>
+        <div class="card-desc">Проприетарный инструмент автоматизации медиа-производства: единый конвейер вместо ручной рутины. Доступ по личному одобрению, внутренняя механика не раскрывается.</div>
+        <div class="card-tags"><span class="card-tag">Desktop</span><span class="card-tag">Automation</span><span class="card-tag">Proprietary</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="web" href="case-robinet.html" style="display:block;">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0a1620,#0f2433);">
+        <div class="card-thumb-bg">RB</div>
+        <div class="card-thumb-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div><span class="card-cat">Сайт · E-commerce</span></div>
+        <div class="card-title">Robinet.MD</div>
+        <div class="card-desc">Интернет-магазин сантехники и систем отопления для рынка Молдовы (RO). Дизайн и разработка сайта — живой проект, подпись «DV.» в футере.</div>
+        <div class="card-tags"><span class="card-tag">E-commerce</span><span class="card-tag">Дизайн сайта</span><span class="card-tag">RO</span></div>
+      </div>
+    </a>
 
   </div>
   <div class="empty" id="empty">Нет проектов в этой категории</div>
@@ -215,6 +251,45 @@
     });
     document.getElementById('empty').classList.toggle('show', visible === 0);
   }
+  filter('ai', document.querySelector('.filter-btn'));
 </script>
+<script>
+window.I18N = {
+  en: {
+    "← Назад":"← Back","Примеры работ":"Selected work",
+    "Собственные продукты и разработки: AI-агенты, автоматизация и контент-проекты. Некоторые ещё в процессе.":"My own products and builds: AI agents, automation and content projects. Some still in progress.",
+    "Автоматизация":"Automation","Сайты":"Sites","SEO / Контент":"SEO / Content","Все":"All",
+    "Продукт · Инди-разработка":"Product · Indie dev","Продукт · AI Bridge":"Product · AI Bridge","Продукт · MVP":"Product · MVP","Разработка · Утилита":"Development · Utility","Продукт · SEO / Контент":"Product · SEO / Content","Продукт · AI + CAD · закрытый":"Product · AI + CAD · closed","Продукт · Закрытый":"Product · Closed","Сайт · E-commerce":"Website · E-commerce",
+    "FreePalp — мульти-агентная AI-система":"FreePalp — a multi-agent AI system","Nexura — нишевое издание":"Nexura — a niche publication",
+    "Multi-agent AI с самокоррекцией, ReAct-loop и автономным использованием инструментов: агент сам планирует, вызывает инструменты, проверяет качество и повторяет. 10+ провайдеров, 41 инструмент.":"Multi-agent AI with self-correction, a ReAct loop and autonomous tool use: the agent plans, calls tools, checks quality and retries. 10+ providers, 41 tools.",
+    "Локальный мост: браузерный DeepSeek → полноценный AI-агент с доступом к файловой системе, shell и браузеру (CDP). Линейка: DeepGate (убран) → DeepBridge (рабочий прототип).":"A local bridge: browser DeepSeek → a full AI agent with file, shell and browser access (CDP). Lineage: DeepGate (removed) → DeepBridge (working prototype).",
+    "Телеграм-бот для обработки фриланс-заявок: AI анализирует вакансию, оценивает совместимость и генерирует отклик через Writer + Critic pipeline.":"A Telegram bot for handling freelance leads: the AI analyzes a job, scores the fit and generates a reply via a Writer + Critic pipeline.",
+    "Настольная утилита автоматизации деплоя для платформы Cartum / Horoshop. Загрузка CSS, JS и HTML одной кнопкой, сохранение авторизации и резервные копии.":"A desktop deploy-automation tool for the Cartum / Horoshop platform. Upload CSS, JS and HTML in one click, with saved auth and backups.",
+    "Статический контент-сайт для Молдовы на Astro (RU/RO): гайды и сравнения техники. 18 статей, Lighthouse 99/100, авто-деплой на Cloudflare Pages. MVP для проверки SEO-гипотезы.":"A static content site for Moldova built on Astro (RU/RO): tech guides and comparisons. 18 articles, Lighthouse 99/100, auto-deploy on Cloudflare Pages. An MVP to test an SEO hypothesis.",
+    "Создание чертежей высокой сложности по одному текстовому промту — без ручной трассировки. Фокус на самых трудозатратных чертежах. Закрытая разработка.":"Generating highly complex drawings from a single text prompt — no manual drafting. Focused on the most labor-intensive drawings. Closed development.",
+    "Проприетарный инструмент автоматизации медиа-производства: единый конвейер вместо ручной рутины. Доступ по личному одобрению, внутренняя механика не раскрывается.":"A proprietary media-production automation tool: one pipeline instead of manual routine. Access by personal approval; internal mechanics are not disclosed.",
+    "Интернет-магазин сантехники и систем отопления для рынка Молдовы (RO). Дизайн и разработка сайта — живой проект, подпись «DV.» в футере.":"An online store for plumbing and heating systems for the Moldovan market (RO). Website design and development — a live project, with a «DV.» credit in the footer.",
+    "Дизайн сайта":"Site design","Нет проектов в этой категории":"No projects in this category"
+  },
+  zh: {
+    "← Назад":"← 返回","Примеры работ":"作品示例",
+    "Собственные продукты и разработки: AI-агенты, автоматизация и контент-проекты. Некоторые ещё в процессе.":"自有产品与开发：AI 智能体、自动化与内容项目。部分仍在进行中。",
+    "Автоматизация":"自动化","Сайты":"网站","SEO / Контент":"SEO / 内容","Все":"全部",
+    "Продукт · Инди-разработка":"产品 · 独立开发","Продукт · AI Bridge":"产品 · AI Bridge","Продукт · MVP":"产品 · MVP","Разработка · Утилита":"开发 · 工具","Продукт · SEO / Контент":"产品 · SEO / 内容","Продукт · AI + CAD · закрытый":"产品 · AI + CAD · 闭源","Продукт · Закрытый":"产品 · 闭源","Сайт · E-commerce":"网站 · 电商",
+    "FreePalp — мульти-агентная AI-система":"FreePalp —— 多智能体 AI 系统","Nexura — нишевое издание":"Nexura —— 细分内容站",
+    "Multi-agent AI с самокоррекцией, ReAct-loop и автономным использованием инструментов: агент сам планирует, вызывает инструменты, проверяет качество и повторяет. 10+ провайдеров, 41 инструмент.":"具备自我纠正、ReAct 循环与自主调用工具的多智能体 AI：自行规划、调用工具、校验质量并重试。10+ 提供商，41 个工具。",
+    "Локальный мост: браузерный DeepSeek → полноценный AI-агент с доступом к файловой системе, shell и браузеру (CDP). Линейка: DeepGate (убран) → DeepBridge (рабочий прототип).":"本地桥接：浏览器版 DeepSeek → 具备文件、shell 与浏览器访问（CDP）的完整 AI 智能体。沿革：DeepGate（已弃）→ DeepBridge（可用原型）。",
+    "Телеграм-бот для обработки фриланс-заявок: AI анализирует вакансию, оценивает совместимость и генерирует отклик через Writer + Critic pipeline.":"处理自由职业需求的 Telegram 机器人：AI 分析职位、评估匹配度，并通过 Writer + Critic 流水线生成回复。",
+    "Настольная утилита автоматизации деплоя для платформы Cartum / Horoshop. Загрузка CSS, JS и HTML одной кнопкой, сохранение авторизации и резервные копии.":"面向 Cartum / Horoshop 平台的桌面部署自动化工具。一键上传 CSS、JS 与 HTML，保存登录态并自动备份。",
+    "Статический контент-сайт для Молдовы на Astro (RU/RO): гайды и сравнения техники. 18 статей, Lighthouse 99/100, авто-деплой на Cloudflare Pages. MVP для проверки SEO-гипотезы.":"基于 Astro 的摩尔多瓦静态内容站（RU/RO）：技术指南与对比。18 篇文章，Lighthouse 99/100，Cloudflare Pages 自动部署。用于验证 SEO 假设的 MVP。",
+    "Создание чертежей высокой сложности по одному текстовому промту — без ручной трассировки. Фокус на самых трудозатратных чертежах. Закрытая разработка.":"通过单条文本提示生成高复杂度图纸 —— 无需手工绘制。聚焦最耗时的绘图。闭源开发。",
+    "Проприетарный инструмент автоматизации медиа-производства: единый конвейер вместо ручной рутины. Доступ по личному одобрению, внутренняя механика не раскрывается.":"专有的媒体生产自动化工具：用单一流水线替代手工流程。需个人批准访问，内部机制不公开。",
+    "Интернет-магазин сантехники и систем отопления для рынка Молдовы (RO). Дизайн и разработка сайта — живой проект, подпись «DV.» в футере.":"面向摩尔多瓦市场（RO）的卫浴与采暖系统网店。网站设计与开发 —— 上线项目，页脚带「DV.」署名。",
+    "Дизайн сайта":"网站设计","Нет проектов в этой категории":"该分类暂无项目"
+  },
+  h: { pf: { en:"Port<span>folio</span>", zh:"作品<span>集</span>" } }
+};
+</script>
+<script src="assets/i18n.js"></script>
 </body>
 </html>

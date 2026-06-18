@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartum Control Center — портфолио</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0d0d; --bg2: #161616; --bg3: #1f1f1f;
+    --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.15);
+    --text: #f0ede8; --text2: #999; --text3: #666;
+    --accent: #c8ff00;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+  h1,h2,h3 { font-family: 'Syne', sans-serif; }
+  a { color: inherit; text-decoration: none; }
+
+  /* TOPBAR */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,13,13,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--accent); }
+  .back-btn { font-size: 0.85rem; color: var(--text2); font-family: 'Syne', sans-serif; font-weight: 600; transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+  .back-btn:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero { max-width: 980px; margin: 0 auto; padding: 4rem 2rem 0; }
+  .hero-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .project-icon {
+    width: 64px; height: 64px; border-radius: 14px;
+    background: rgba(200,255,0,0.08); border: 1px solid rgba(200,255,0,0.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .hero-meta { display: flex; flex-direction: column; gap: 0.25rem; }
+  .hero-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); font-weight: 600; }
+  .hero-suite { font-size: 0.82rem; color: var(--text3); }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--accent); }
+  .hero-desc { font-size: 1rem; color: var(--text2); max-width: 640px; line-height: 1.75; margin-bottom: 2rem; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .tag { padding: 0.35rem 0.9rem; border: 1px solid var(--border2); border-radius: 100px; font-size: 0.78rem; color: var(--text2); }
+  .tag.a { border-color: rgba(200,255,0,0.3); color: var(--accent); background: rgba(200,255,0,0.05); }
+  .hero-divider { height: 1px; background: var(--border); margin-bottom: 3rem; }
+
+  /* MAIN LAYOUT */
+  .layout { max-width: 980px; margin: 0 auto; padding: 0 2rem 5rem; display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; }
+  @media (max-width: 768px) { .layout { grid-template-columns: 1fr; } .topbar { padding: 1rem 1.25rem; } .hero { padding: 3rem 1.25rem 0; } .layout { padding: 0 1.25rem 4rem; } }
+
+  /* LEFT */
+  .section { margin-bottom: 3rem; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(200,255,0,0.12); }
+  .section-text { font-size: 0.95rem; color: var(--text2); line-height: 1.75; }
+  .section-text + .section-text { margin-top: 0.75rem; }
+
+  /* FEATURES */
+  .features { display: flex; flex-direction: column; gap: 1rem; }
+  .feature { display: flex; gap: 1rem; padding: 1.1rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; transition: border-color 0.2s; }
+  .feature:hover { border-color: var(--border2); }
+  .feature-icon { width: 38px; height: 38px; border-radius: 9px; background: rgba(200,255,0,0.07); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .feature-body h4 { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .feature-body p { font-size: 0.83rem; color: var(--text2); line-height: 1.6; }
+  .badge { display: inline-block; margin-left: 0.4rem; font-size: 0.62rem; padding: 0.1rem 0.45rem; background: rgba(200,255,0,0.12); color: var(--accent); border-radius: 100px; vertical-align: middle; font-weight: 600; letter-spacing: 0.04em; }
+
+  /* RIGHT SIDEBAR */
+  .sidebar { position: sticky; top: 80px; }
+  .sidebar-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1.25rem; }
+  .sidebar-card-title { font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); padding: 1rem 1.25rem 0; margin-bottom: 0.75rem; }
+  .info-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 1.25rem; border-top: 1px solid var(--border); font-size: 0.83rem; }
+  .info-row:first-of-type { border-top: none; }
+  .info-label { color: var(--text3); }
+  .info-value { color: var(--text); font-weight: 500; text-align: right; max-width: 160px; }
+  .info-value.accent { color: var(--accent); }
+
+  /* STACK LIST */
+  .stack-list { padding: 0 1.25rem 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .stack-tag { padding: 0.25rem 0.65rem; background: var(--bg3); border-radius: 100px; font-size: 0.75rem; color: var(--text2); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="portfolio.html" class="back-btn">← Портфолио</a>
+  <div class="nav-logo">DV<span>.</span></div>
+</div>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="project-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        <path d="M7 8l3 3-3 3"/>
+        <line x1="13" y1="11" x2="17" y2="11"/>
+      </svg>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-cat">Продукт · Инди-разработка</div>
+      <div class="hero-suite">Cartum Bridge Suite</div>
+    </div>
+  </div>
+
+  <h1>Cartum <span>Control Center</span></h1>
+  <p class="hero-desc">
+    Настольная утилита автоматизации деплоя для платформы Cartum / Horoshop. Заменяет ручное копирование CSS, JS и HTML в редактор платформы — одной кнопкой загружает все файлы, сохраняет авторизацию и делает резервные копии.
+  </p>
+
+  <div class="hero-tags">
+    <span class="tag a">Python</span>
+    <span class="tag a">Tkinter GUI</span>
+    <span class="tag a">Playwright</span>
+    <span class="tag">Cartum / Horoshop</span>
+    <span class="tag">Автоматизация</span>
+    <span class="tag">RSA шифрование</span>
+    <span class="tag">Node.js</span>
+  </div>
+  <div class="hero-divider"></div>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT -->
+  <div>
+
+    <div class="section">
+      <div class="section-title">О проекте</div>
+      <p class="section-text">Cartum Control Center — внутренний инструмент, созданный для устранения рутины при работе с темами интернет-магазинов на платформе Cartum / Horoshop. Стандартный процесс требовал вручную открывать браузер, авторизоваться в админке и по одному вставлять CSS и HTML-фрагменты в редактор.</p>
+      <p class="section-text" style="margin-top:0.75rem;">Программа автоматизирует весь цикл: выбор папки с исходниками → авторизация → копирование в src → тихая загрузка в платформу. Всё это в одном окне.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Ключевые системы</div>
+      <div class="features">
+
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="feature-body">
+            <h4>Авторизация с сохранением сессии</h4>
+            <p>Вход в админку Cartum через Playwright один раз — сессия сохраняется в <code style="color:var(--accent);font-size:0.8rem;">.auth/cartum.json</code>. Повторная авторизация не нужна до истечения сессии.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          </div>
+          <div class="feature-body">
+            <h4>Тихий деплой одной кнопкой</h4>
+            <p>Копирует <code style="color:var(--accent);font-size:0.8rem;">desktop.css</code>, <code style="color:var(--accent);font-size:0.8rem;">mobile.css</code>, HTML-фрагменты в папку src и загружает напрямую в Cartum без открытия браузера вручную.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <div class="feature-body">
+            <h4>Система резервных копий</h4>
+            <p>Автоматические бэкапы перед каждым деплоем. Политики хранения: 1 / 7 / 30 дней или всегда. Восстановление любой версии в один клик из вкладки «Сохранения».</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 12l5 5 5-5M12 7v10"/></svg>
+          </div>
+          <div class="feature-body">
+            <h4>ZIP-источник <span class="badge">уникально</span></h4>
+            <p>Если в папке-источнике найден ZIP-архив с нужным префиксом — файлы берутся из него автоматически, без ручной распаковки.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="feature-body">
+            <h4>Зашифрованная телеметрия <span class="badge">уникально</span></h4>
+            <p>Аналитика использования шифруется RSA публичным ключом. Расшифровать данные может только владелец через отдельную owner-консоль с приватным ключом. Отправка только по явному согласию пользователя.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l14.14 14.14"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+          </div>
+          <div class="feature-body">
+            <h4>UDP Discovery owner-консоли <span class="badge">уникально</span></h4>
+            <p>Автоматически обнаруживает relay-консоль в локальной сети по UDP на порту 8766 — не нужно вручную указывать IP.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </div>
+          <div class="feature-body">
+            <h4>Система миграции конфигурации</h4>
+            <p>При обновлении до новой версии автоматически переносит все настройки, пути и авторизацию из старой установки.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">О проекте</div>
+      <div class="info-row">
+        <span class="info-label">Тип</span>
+        <span class="info-value">Настольное приложение</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Версия</span>
+        <span class="info-value accent">v1.17.0</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Платформа</span>
+        <span class="info-value">Windows</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Статус</span>
+        <span class="info-value accent">В работе</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Назначение</span>
+        <span class="info-value">Cartum / Horoshop</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Роль</span>
+        <span class="info-value">Автор / разработчик</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Стек</div>
+      <div class="stack-list">
+        <span class="stack-tag">Python 3</span>
+        <span class="stack-tag">Tkinter</span>
+        <span class="stack-tag">Playwright</span>
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">RSA</span>
+        <span class="stack-tag">UDP</span>
+        <span class="stack-tag">JSON</span>
+        <span class="stack-tag">PowerShell</span>
+        <span class="stack-tag">CMD</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Что решает</div>
+      <div style="padding: 0 1.25rem 1rem;">
+        <div style="font-size:0.83rem; color:var(--text2); line-height:1.7; padding-top:0.5rem;">
+          Устраняет ручной деплой в Cartum — экономит 10–15 минут при каждом обновлении темы магазина.
+        </div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+</body>
+</html>

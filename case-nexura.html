@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexura — портфолио</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg:#0d0d0d;--bg2:#161616;--bg3:#1f1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0ede8;--text2:#999;--text3:#666;--accent:#c8ff00; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6; }
+  h1,h2,h3,h4 { font-family:'Syne',sans-serif; }
+  a { color:inherit;text-decoration:none; }
+  .topbar { position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center; }
+  .nav-logo { font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em; }
+  .nav-logo span { color:var(--accent); }
+  .back-btn { font-size:0.85rem;color:var(--text2);font-family:'Syne',sans-serif;font-weight:600;transition:color 0.2s; }
+  .back-btn:hover { color:var(--accent); }
+  .hero { max-width:980px;margin:0 auto;padding:4rem 2rem 0; }
+  .hero-top { display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem; }
+  .project-icon { width:64px;height:64px;border-radius:14px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .hero h1 { font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem; }
+  .hero h1 span { color:var(--accent); }
+  .hero-desc { font-size:1rem;color:var(--text2);max-width:660px;line-height:1.75;margin-bottom:2rem; }
+  .hero-tags { display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem; }
+  .tag { padding:0.35rem 0.9rem;border:1px solid var(--border2);border-radius:100px;font-size:0.78rem;color:var(--text2); }
+  .tag.a { border-color:rgba(200,255,0,0.3);color:var(--accent);background:rgba(200,255,0,0.05); }
+  .dl-btn { display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--accent);color:#0d0d0d;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.875rem;transition:all 0.2s;margin-bottom:2.5rem; }
+  .dl-btn:hover { background:#a8d900;transform:translateY(-1px); }
+  .hero-divider { height:1px;background:var(--border);margin-bottom:3rem; }
+  .shots { max-width:980px;margin:0 auto;padding:0 2rem 1rem;display:grid;grid-template-columns:2fr 1fr;gap:1rem; }
+  .shots figure { margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2); }
+  .shots img { width:100%;display:block; }
+  .shots figcaption { font-size:0.74rem;color:var(--text3);padding:0.6rem 0.85rem;line-height:1.5; }
+  .layout { max-width:980px;margin:0 auto;padding:1rem 2rem 5rem;display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start; }
+  @media(max-width:768px){.layout,.shots{grid-template-columns:1fr}.topbar,.hero{padding-left:1.25rem;padding-right:1.25rem}.layout{padding:1rem 1.25rem 4rem}}
+  .section { margin-bottom:2.5rem; }
+  .section-title { font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12); }
+  .section-text { font-size:0.92rem;color:var(--text2);line-height:1.75; }
+  .features { display:flex;flex-direction:column;gap:0.85rem; }
+  .feature { display:flex;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;transition:border-color 0.2s; }
+  .feature:hover { border-color:var(--border2); }
+  .fi { width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+  .fb h4 { font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;margin-bottom:0.25rem; }
+  .fb p { font-size:0.82rem;color:var(--text2);line-height:1.6; }
+  .badge { display:inline-block;margin-left:0.4rem;font-size:0.6rem;padding:0.1rem 0.4rem;background:rgba(200,255,0,0.12);color:var(--accent);border-radius:100px;vertical-align:middle;font-weight:700; }
+  .stat-row { display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.5rem; }
+  .stat { flex:1;min-width:120px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.1rem; }
+  .stat .n { font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--accent);line-height:1; }
+  .stat .l { font-size:0.72rem;color:var(--text3);margin-top:0.35rem; }
+  .sidebar-card { background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem; }
+  .sct { font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);padding:1rem 1.25rem 0;margin-bottom:0.75rem; }
+  .ir { display:flex;justify-content:space-between;align-items:center;padding:0.6rem 1.25rem;border-top:1px solid var(--border);font-size:0.83rem;gap:1rem; }
+  .ir:first-of-type { border-top:none; }
+  .il { color:var(--text3); }
+  .iv { color:var(--text);font-weight:500;text-align:right; }
+  .iv.a { color:var(--accent); }
+  .stack-list { padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem; }
+  .st { padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2); }
+  .sidebar { position:sticky;top:80px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="portfolio.html" class="back-btn">← Портфолио</a>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
+    <div class="nav-logo">DV<span>.</span></div>
+  </div>
+</div>
+<div class="hero">
+  <div class="hero-top">
+    <div class="project-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;">Продукт · SEO / Контент</div>
+      <div style="font-size:0.82rem;color:var(--text3);">Нишевая редакция для Молдовы · RU / RO</div>
+    </div>
+  </div>
+  <h1>Nex<span>ura</span></h1>
+  <p class="hero-desc">Статическое издание для Молдовы на Astro: независимые гайды и сравнения техники (робот-пылесосы, AI для работы, умный дом) на русском и румынском. Цель — проверить нишевую SEO-гипотезу на реальных данных поиска, а не на догадках.</p>
+  <div class="hero-tags">
+    <span class="tag a">Astro</span><span class="tag a">Cloudflare Pages</span><span class="tag a">SEO</span>
+    <span class="tag">RU / RO</span><span class="tag">18 статей</span><span class="tag">Search Console</span>
+    <span class="tag">Lighthouse 99</span><span class="tag">CI / Auto-deploy</span>
+  </div>
+  <a href="https://nexura-md.pages.dev" target="_blank" rel="noopener" class="dl-btn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    Открыть сайт ↗
+  </a>
+  <div class="hero-divider"></div>
+</div>
+<div class="shots">
+  <figure><img src="assets/nexura/production.png" alt="Nexura — главная страница" loading="lazy"><figcaption>Главная: редакционные гайды и сравнения, RU/RO-переключение</figcaption></figure>
+  <figure><img src="assets/nexura/mobile.png" alt="Nexura — мобильная версия" loading="lazy"><figcaption>Мобильная версия</figcaption></figure>
+</div>
+<div class="layout">
+  <div>
+    <div class="section">
+      <div class="section-title">О проекте</div>
+      <p class="section-text">Nexura — нишевое контент-издание: практичные гайды и сравнения техники для рынка Молдовы на двух языках (RU/RO), с отдельной презентационной EN-веткой. Каждая статья проходит редакционную проверку: источники, дата ревью, локальные условия Молдовы, запрет на фиктивные «тесты». Сайт — MVP для проверки бизнес-гипотезы по нише.</p>
+    </div>
+    <div class="section">
+      <div class="section-title">Что сделано (инженерия)</div>
+      <div class="stat-row">
+        <div class="stat"><div class="n">18</div><div class="l">статей (9 RU + 9 RO)</div></div>
+        <div class="stat"><div class="n">148</div><div class="l">запросов проверено</div></div>
+        <div class="stat"><div class="n">31</div><div class="l">URL в prod-аудите</div></div>
+      </div>
+      <div class="features">
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><div class="fb"><h4>Строгий редакционный пайплайн</h4><p>Публикация только с источниками (≥2, включая первичный), датой ревью, локальной привязкой к Молдове и запретом необоснованных тестов.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div><div class="fb"><h4>Production-аудит <span class="badge">авто</span></h4><p>Скрипт грузит каждый URL из живого sitemap и проверяет HTTP, canonical, языковые альтернаты, Open Graph, структурированные данные, аналитику и robots.txt.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div><div class="fb"><h4>Lighthouse 99 / 100 / 100 / 100</h4><p>Performance 99, Accessibility, Best Practices и SEO — по 100. Проверено на desktop и mobile.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><polyline points="21 3 21 9 15 9"/></svg></div><div class="fb"><h4>CI и авто-деплой</h4><p>GitHub Actions собирает сайт и публикует на Cloudflare Pages. Подключены Web Analytics и Google Search Console, sitemap отправлен.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="fb"><h4>Семантика и кластеры</h4><p>108 запросов RU/RO прогнаны через Keyword Planner (регион Молдова), ручной разбор SERP. Выбраны 3 кластера: робот-пылесосы, AI для работы, умный дом.</p></div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Статус</div>
+      <p class="section-text" data-i18nh="statusp"><strong style="color:var(--text)">Инженерно готов и опубликован.</strong> Цель ещё не закрыта: бизнес-гипотеза проверяется внешними данными — наблюдение Search Console 8–12 недель (индексация, первые показы, реальные запросы и CTR) и числа Keyword Planner, недоступные без платной кампании. До появления данных — никакой массовой генерации статей и монетизации.</p>
+    </div>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sct">О проекте</div>
+      <div class="ir"><span class="il">Тип</span><span class="iv">Контент / SEO-сайт</span></div>
+      <div class="ir"><span class="il">Языки</span><span class="iv">RU · RO · EN</span></div>
+      <div class="ir"><span class="il">Статьи</span><span class="iv a">18</span></div>
+      <div class="ir"><span class="il">Lighthouse</span><span class="iv a">99 / 100×3</span></div>
+      <div class="ir"><span class="il">Статус</span><span class="iv">MVP live · ждёт данных</span></div>
+      <div class="ir"><span class="il">Роль</span><span class="iv">Автор / разработчик</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sct">Стек</div>
+      <div class="stack-list">
+        <span class="st">Astro</span><span class="st">Cloudflare Pages</span><span class="st">GitHub Actions</span>
+        <span class="st">Web Analytics</span><span class="st">Search Console</span><span class="st">Keyword Planner</span>
+        <span class="st">Structured Data</span><span class="st">Lighthouse</span>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+window.I18N = {
+  en: {
+    "← Портфолио":"← Portfolio","Продукт · SEO / Контент":"Product · SEO / Content","Нишевая редакция для Молдовы · RU / RO":"A niche editorial for Moldova · RU / RO",
+    "Статическое издание для Молдовы на Astro: независимые гайды и сравнения техники (робот-пылесосы, AI для работы, умный дом) на русском и румынском. Цель — проверить нишевую SEO-гипотезу на реальных данных поиска, а не на догадках.":"A static publication for Moldova built on Astro: independent guides and tech comparisons (robot vacuums, AI for work, smart home) in Russian and Romanian. The goal is to test a niche SEO hypothesis on real search data, not guesses.",
+    "18 статей":"18 articles","Открыть сайт ↗":"Open site ↗",
+    "Главная: редакционные гайды и сравнения, RU/RO-переключение":"Home: editorial guides and comparisons, RU/RO switch","Мобильная версия":"Mobile version",
+    "О проекте":"About the project",
+    "Nexura — нишевое контент-издание: практичные гайды и сравнения техники для рынка Молдовы на двух языках (RU/RO), с отдельной презентационной EN-веткой. Каждая статья проходит редакционную проверку: источники, дата ревью, локальные условия Молдовы, запрет на фиктивные «тесты». Сайт — MVP для проверки бизнес-гипотезы по нише.":"Nexura is a niche content publication: practical guides and tech comparisons for the Moldovan market in two languages (RU/RO), with a separate presentational EN branch. Every article goes through editorial review: sources, review date, Moldova-specific context, no fake «tests». The site is an MVP to test a niche business hypothesis.",
+    "Что сделано (инженерия)":"What's done (engineering)",
+    "статей (9 RU + 9 RO)":"articles (9 RU + 9 RO)","запросов проверено":"queries checked","URL в prod-аудите":"URLs in prod audit",
+    "Строгий редакционный пайплайн":"Strict editorial pipeline","Публикация только с источниками (≥2, включая первичный), датой ревью, локальной привязкой к Молдове и запретом необоснованных тестов.":"Published only with sources (≥2, including a primary one), a review date, Moldova context and no unsupported tests.",
+    "Production-аудит":"Production audit","авто":"auto","Скрипт грузит каждый URL из живого sitemap и проверяет HTTP, canonical, языковые альтернаты, Open Graph, структурированные данные, аналитику и robots.txt.":"A script loads every URL from the live sitemap and checks HTTP, canonical, language alternates, Open Graph, structured data, analytics and robots.txt.",
+    "Performance 99, Accessibility, Best Practices и SEO — по 100. Проверено на desktop и mobile.":"Performance 99, Accessibility, Best Practices and SEO — 100 each. Checked on desktop and mobile.",
+    "CI и авто-деплой":"CI & auto-deploy","GitHub Actions собирает сайт и публикует на Cloudflare Pages. Подключены Web Analytics и Google Search Console, sitemap отправлен.":"GitHub Actions builds the site and publishes to Cloudflare Pages. Web Analytics and Google Search Console are connected, sitemap submitted.",
+    "Семантика и кластеры":"Semantics & clusters","108 запросов RU/RO прогнаны через Keyword Planner (регион Молдова), ручной разбор SERP. Выбраны 3 кластера: робот-пылесосы, AI для работы, умный дом.":"108 RU/RO queries run through Keyword Planner (Moldova region), manual SERP analysis. Three clusters chosen: robot vacuums, AI for work, smart home.",
+    "Статус":"Status",
+    "Тип":"Type","Языки":"Languages","Статьи":"Articles","Роль":"Role",
+    "Контент / SEO-сайт":"Content / SEO site","MVP live · ждёт данных":"MVP live · awaiting data","Автор / разработчик":"Author / developer","Стек":"Stack"
+  },
+  zh: {
+    "← Портфолио":"← 作品集","Продукт · SEO / Контент":"产品 · SEO / 内容","Нишевая редакция для Молдовы · RU / RO":"面向摩尔多瓦的细分编辑站 · RU / RO",
+    "Статическое издание для Молдовы на Astro: независимые гайды и сравнения техники (робот-пылесосы, AI для работы, умный дом) на русском и румынском. Цель — проверить нишевую SEO-гипотезу на реальных данных поиска, а не на догадках.":"基于 Astro 的摩尔多瓦静态出版物：以俄语和罗马尼亚语提供独立的技术指南与对比（扫地机器人、办公 AI、智能家居）。目标是用真实搜索数据而非猜测来验证细分 SEO 假设。",
+    "18 статей":"18 篇文章","Открыть сайт ↗":"打开网站 ↗",
+    "Главная: редакционные гайды и сравнения, RU/RO-переключение":"首页：编辑指南与对比，RU/RO 切换","Мобильная версия":"移动版",
+    "О проекте":"关于项目",
+    "Nexura — нишевое контент-издание: практичные гайды и сравнения техники для рынка Молдовы на двух языках (RU/RO), с отдельной презентационной EN-веткой. Каждая статья проходит редакционную проверку: источники, дата ревью, локальные условия Молдовы, запрет на фиктивные «тесты». Сайт — MVP для проверки бизнес-гипотезы по нише.":"Nexura 是一个细分内容出版物：面向摩尔多瓦市场、以两种语言（RU/RO）提供实用指南与技术对比，并设独立的 EN 展示分支。每篇文章都经过编辑审核：来源、审核日期、摩尔多瓦本地情况，禁止虚构「测评」。该站是验证细分商业假设的 MVP。",
+    "Что сделано (инженерия)":"已完成（工程）",
+    "статей (9 RU + 9 RO)":"篇文章（9 RU + 9 RO）","запросов проверено":"个查询已核验","URL в prod-аудите":"个 URL 在生产审计中",
+    "Строгий редакционный пайплайн":"严格的编辑流程","Публикация только с источниками (≥2, включая первичный), датой ревью, локальной привязкой к Молдове и запретом необоснованных тестов.":"仅在具备来源（≥2，含一手来源）、审核日期、摩尔多瓦本地化并禁止无依据测评时才发布。",
+    "Production-аудит":"生产审计","авто":"自动","Скрипт грузит каждый URL из живого sitemap и проверяет HTTP, canonical, языковые альтернаты, Open Graph, структурированные данные, аналитику и robots.txt.":"脚本从在线 sitemap 加载每个 URL，检查 HTTP、canonical、语言备选、Open Graph、结构化数据、分析与 robots.txt。",
+    "Performance 99, Accessibility, Best Practices и SEO — по 100. Проверено на desktop и mobile.":"Performance 99，Accessibility、Best Practices 与 SEO 均 100。已在桌面与移动端验证。",
+    "CI и авто-деплой":"CI 与自动部署","GitHub Actions собирает сайт и публикует на Cloudflare Pages. Подключены Web Analytics и Google Search Console, sitemap отправлен.":"GitHub Actions 构建并发布到 Cloudflare Pages。已接入 Web Analytics 与 Google Search Console，已提交 sitemap。",
+    "Семантика и кластеры":"语义与聚类","108 запросов RU/RO прогнаны через Keyword Planner (регион Молдова), ручной разбор SERP. Выбраны 3 кластера: робот-пылесосы, AI для работы, умный дом.":"108 个 RU/RO 查询经 Keyword Planner（摩尔多瓦地区）跑过，并手动分析 SERP。选定 3 个聚类：扫地机器人、办公 AI、智能家居。",
+    "Статус":"状态",
+    "Тип":"类型","Языки":"语言","Статьи":"文章","Роль":"角色",
+    "Контент / SEO-сайт":"内容 / SEO 站点","MVP live · ждёт данных":"MVP 上线 · 等待数据","Автор / разработчик":"作者 / 开发者","Стек":"技术栈"
+  },
+  h: {
+    statusp: {
+      en:`<strong style="color:var(--text)">Engineering-ready and published.</strong> The goal isn't closed yet: the business hypothesis is being validated by external data — 8–12 weeks of Search Console observation (indexing, first impressions, real queries and CTR) and Keyword Planner numbers unavailable without a paid campaign. Until data arrives — no mass article generation or monetization.`,
+      zh:`<strong style="color:var(--text)">工程已就绪并上线。</strong>目标尚未达成：商业假设正由外部数据验证 —— Search Console 观察 8–12 周（索引、首次曝光、真实查询与 CTR），以及未付费投放无法获取的 Keyword Planner 数据。在数据出现前 —— 不批量生成文章、不做变现。`
+    }
+  }
+};
+</script>
+<script src="assets/i18n.js"></script>
+</body>
+</html>

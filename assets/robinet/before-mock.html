@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robinet — сток-шаблон (реконструкция «до»)</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,Helvetica,sans-serif;color:#333;background:#fff;font-size:14px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+  /* header — базовый, без оформления */
+  /* серая шапка как на старом сайте */
+  .topbar{background:#3c4045}
+  .hd{padding:14px 16px;display:flex;align-items:center;gap:22px}
+  .logo{display:flex;align-items:center;font-size:27px;font-weight:bold;letter-spacing:1px}
+  .logo .g{color:#9a9a9a}
+  .search{flex:1;display:flex;max-width:680px}
+  .search input{flex:1;border:none;border-radius:22px 0 0 22px;padding:10px 18px;font-size:13px;color:#999}
+  .search button{border:none;background:#fff;padding:0 18px;border-radius:0 22px 22px 0;cursor:pointer;color:#999;font-size:15px}
+  .hd .ph{font-size:14px;color:#2aa4e0;white-space:nowrap}
+  .hd .ic{display:flex;gap:16px;color:#2aa4e0;font-size:21px}
+  /* зелёное меню */
+  .nav{background:#43a548}
+  .nav .wrap{display:flex;gap:24px;flex-wrap:wrap;padding:13px 16px;align-items:center}
+  .nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:bold}
+  .nav a:hover{opacity:.85}
+  .nav .lang{margin-left:auto;color:#e3f3e3;font-size:13px}
+  /* единственный баннер */
+  .banner{margin:22px auto;border:1px solid #e6e6e6;background:#f7f7f7;display:flex;align-items:center;justify-content:center;gap:40px;height:230px}
+  .banner .faucets{display:flex;gap:26px;align-items:flex-end}
+  .banner .fc{width:34px;height:90px;border:3px solid #b9b9b9;border-bottom:none;border-radius:30px 30px 0 0;position:relative}
+  .banner .fc::after{content:"";position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);width:14px;height:30px;background:#c9c9c9}
+  .banner .vol{font-size:13px;color:#777;text-align:left}
+  .banner .vol .b{font-size:40px;font-weight:bold;letter-spacing:3px;color:#222}
+  .banner .vol .b span{color:#d11}
+  /* заголовок + базовый грид товаров */
+  .h2{font-size:18px;font-weight:bold;color:#333;margin:24px 0 14px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px}
+  .card{border:1px solid #e6e6e6;border-radius:3px;padding:12px}
+  .card .img{height:150px;background:#f0f0f0;border:1px solid #eee;margin-bottom:10px;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:12px}
+  .card .t{font-size:13px;color:#444;line-height:1.4;height:36px;overflow:hidden;margin-bottom:8px}
+  .card .p{font-size:16px;font-weight:bold;color:#333;margin-bottom:8px}
+  .card .btn{display:block;text-align:center;border:1px solid #2f6fb0;color:#2f6fb0;border-radius:3px;padding:7px;font-size:13px;cursor:pointer}
+  /* footer — базовый */
+  .ft{border-top:1px solid #e2e2e2;background:#fafafa;padding:24px 0;color:#888;font-size:12px;margin-top:10px}
+  .ft .cols{display:flex;gap:50px;flex-wrap:wrap}
+  .ft .col b{display:block;color:#555;margin-bottom:8px;font-size:13px}
+  .ft .col a{display:block;color:#888;text-decoration:none;margin-bottom:5px}
+</style>
+</head>
+<body>
+  <div class="topbar"><div class="hd wrap">
+    <div class="logo">
+      <span class="g">R</span>
+      <svg width="28" height="32" viewBox="0 0 40 46" style="margin:0 1px"><path d="M20 3C28 15 35 21 35 30A15 15 0 1 1 5 30C5 21 12 15 20 3Z" fill="none" stroke="#2aa4e0" stroke-width="4"/><circle cx="20" cy="31" r="6.5" fill="none" stroke="#2aa4e0" stroke-width="4"/><circle cx="20" cy="13" r="3" fill="#e6312b"/></svg>
+      <span class="g">BINET</span>
+    </div>
+    <div class="search"><input placeholder="поиск товаров"><button>🔍</button></div>
+    <div class="ph">📞 +37379603603 ⌄</div>
+    <div class="ic"><span>👤</span><span>♡</span><span>🛒</span></div>
+  </div></div>
+  <div class="nav"><div class="wrap">
+    <a>Смесители</a><a>Фильтрация</a><a>Сантехника</a><a>Системы отопления</a><a>Кондиционеры</a><a>Водоснабжение и канализация</a><a>Вентиляция</a>
+    <span class="lang">Ro Ru</span>
+  </div></div>
+
+  <div class="wrap">
+    <div class="banner">
+      <div class="faucets"><div class="fc"></div><div class="fc"></div><div class="fc"></div></div>
+      <div class="vol"><div class="b">VOLLE<span>.</span></div>смесители для ванной, кухни и туалета</div>
+    </div>
+
+    <div class="h2">Популярные категории</div>
+    <div style="color:#777;font-size:13px;margin-bottom:6px;">Смесители · Сантехника · Системы отопления · Кондиционеры · Вентиляция</div>
+
+    <div class="h2">Товары</div>
+    <div class="grid">
+      <div class="card"><div class="img">нет фото</div><div class="t">Смеситель для кухни хром</div><div class="p">1 250 lei</div><div class="btn">Купить</div></div>
+      <div class="card"><div class="img">нет фото</div><div class="t">Смеситель для ванной</div><div class="p">980 lei</div><div class="btn">Купить</div></div>
+      <div class="card"><div class="img">нет фото</div><div class="t">Смеситель для раковины</div><div class="p">1 100 lei</div><div class="btn">Купить</div></div>
+      <div class="card"><div class="img">нет фото</div><div class="t">Смеситель чёрный матовый</div><div class="p">1 540 lei</div><div class="btn">Купить</div></div>
+      <div class="card"><div class="img">нет фото</div><div class="t">Душевая система</div><div class="p">2 300 lei</div><div class="btn">Купить</div></div>
+      <div class="card"><div class="img">нет фото</div><div class="t">Котёл газовый</div><div class="p">8 900 lei</div><div class="btn">Купить</div></div>
+      <div class="card"><div class="img">нет фото</div><div class="t">Радиатор стальной</div><div class="p">1 750 lei</div><div class="btn">Купить</div></div>
+      <div class="card"><div class="img">нет фото</div><div class="t">Бойлер 80 л</div><div class="p">3 200 lei</div><div class="btn">Купить</div></div>
+    </div>
+  </div>
+
+  <div class="ft"><div class="wrap cols">
+    <div class="col"><b>Каталог</b><a>Смесители</a><a>Сантехника</a><a>Отопление</a></div>
+    <div class="col"><b>Клиентам</b><a>Доставка</a><a>Оплата</a><a>Контакты</a></div>
+    <div class="col"><b>Контакты</b><a>+373 79 603 603</a><a>Кишинёв</a></div>
+  </div></div>
+</body>
+</html>

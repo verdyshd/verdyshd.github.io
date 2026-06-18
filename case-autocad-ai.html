@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoCAD AI — портфолио</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg:#0d0d0d;--bg2:#161616;--bg3:#1f1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0ede8;--text2:#999;--text3:#666;--accent:#c8ff00; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6; }
+  h1,h2,h3,h4 { font-family:'Syne',sans-serif; }
+  a { color:inherit;text-decoration:none; }
+  .topbar { position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center; }
+  .nav-logo { font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em; }
+  .nav-logo span { color:var(--accent); }
+  .back-btn { font-size:0.85rem;color:var(--text2);font-family:'Syne',sans-serif;font-weight:600;transition:color 0.2s; }
+  .back-btn:hover { color:var(--accent); }
+  .hero { max-width:980px;margin:0 auto;padding:4rem 2rem 0; }
+  .hero-top { display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem; }
+  .project-icon { width:64px;height:64px;border-radius:14px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .hero h1 { font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem; }
+  .hero h1 span { color:var(--accent); }
+  .hero-desc { font-size:1rem;color:var(--text2);max-width:660px;line-height:1.75;margin-bottom:2rem; }
+  .hero-tags { display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem; }
+  .tag { padding:0.35rem 0.9rem;border:1px solid var(--border2);border-radius:100px;font-size:0.78rem;color:var(--text2); }
+  .tag.a { border-color:rgba(200,255,0,0.3);color:var(--accent);background:rgba(200,255,0,0.05); }
+  .note { display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.3rem;border:1px solid var(--border2);border-radius:100px;color:var(--text2);font-size:0.85rem;margin-bottom:2.5rem; }
+  .hero-divider { height:1px;background:var(--border);margin-bottom:3rem; }
+  .demo { max-width:980px;margin:0 auto;padding:0 2rem 1rem; }
+  .flow { display:flex;align-items:stretch;gap:0.75rem;flex-wrap:wrap; }
+  .flow-box { flex:1;min-width:160px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem; }
+  .flow-box .k { font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin-bottom:0.5rem; }
+  .flow-box .v { font-size:0.9rem;color:var(--text);line-height:1.5; }
+  .flow-box.prompt .v { font-family:monospace;color:var(--accent);font-size:0.82rem; }
+  .flow-arrow { display:flex;align-items:center;color:var(--accent);font-size:1.4rem; }
+  .layout { max-width:980px;margin:0 auto;padding:1rem 2rem 5rem;display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start; }
+  @media(max-width:768px){.layout{grid-template-columns:1fr}.topbar,.hero,.demo{padding-left:1.25rem;padding-right:1.25rem}.layout{padding:1rem 1.25rem 4rem}.flow-arrow{transform:rotate(90deg)}}
+  .section { margin-bottom:2.5rem; }
+  .section-title { font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12); }
+  .section-text { font-size:0.92rem;color:var(--text2);line-height:1.75; }
+  .features { display:flex;flex-direction:column;gap:0.85rem; }
+  .feature { display:flex;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px; }
+  .fi { width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+  .fb h4 { font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;margin-bottom:0.25rem; }
+  .fb p { font-size:0.82rem;color:var(--text2);line-height:1.6; }
+  .sidebar-card { background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem; }
+  .sct { font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);padding:1rem 1.25rem 0;margin-bottom:0.75rem; }
+  .ir { display:flex;justify-content:space-between;align-items:center;padding:0.6rem 1.25rem;border-top:1px solid var(--border);font-size:0.83rem;gap:1rem; }
+  .ir:first-of-type { border-top:none; }
+  .il { color:var(--text3); }
+  .iv { color:var(--text);font-weight:500;text-align:right; }
+  .iv.a { color:var(--accent); }
+  .stack-list { padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem; }
+  .st { padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2); }
+  .sidebar { position:sticky;top:80px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="portfolio.html" class="back-btn">← Портфолио</a>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+    </div>
+    <div class="nav-logo">DV<span>.</span></div>
+  </div>
+</div>
+<div class="hero">
+  <div class="hero-top">
+    <div class="project-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/><path d="M3 7l4-4 3 3"/></svg>
+    </div>
+    <div>
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;">Продукт · AI + CAD</div>
+      <div style="font-size:0.82rem;color:var(--text3);">Prompt → чертёж · закрытая разработка</div>
+    </div>
+  </div>
+  <h1>AutoCAD <span>AI</span></h1>
+  <p class="hero-desc">Инструмент, который создаёт чертежи высокой сложности по одному текстовому промту. Идея — убрать ручную трассировку: пользователь описывает деталь словами, система выдаёт готовый сложный чертёж.</p>
+  <div class="hero-tags">
+    <span class="tag a">AI</span><span class="tag a">AutoCAD</span><span class="tag a">Prompt-to-CAD</span>
+    <span class="tag">Генерация чертежей</span><span class="tag">Автоматизация</span>
+  </div>
+  <div class="note">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Закрытая разработка — общий разбор
+  </div>
+  <div class="hero-divider"></div>
+</div>
+<div class="demo">
+  <div class="flow">
+    <div class="flow-box prompt"><div class="k">Один промт</div><div class="v">«начерти сложную деталь по описанию…»</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box"><div class="k">AI-обработка</div><div class="v">Интерпретация описания в геометрию и параметры</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box"><div class="k">Результат</div><div class="v">Готовый чертёж в DWG / DXF</div></div>
+  </div>
+</div>
+<div style="max-width:980px;margin:0 auto;padding:0 2rem 1rem;">
+  <figure style="margin:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#fff;">
+    <img src="assets/autocad/drawing.png" alt="AutoCAD AI — сгенерированный чертёж прокладки" loading="lazy" style="width:100%;display:block;">
+  </figure>
+  <div style="font-size:0.74rem;color:var(--text3);padding:0.6rem 0.2rem;">Пример сгенерированного чертежа: восьмиугольная прокладка с отверстиями, осевыми линиями и размерами — построено автоматически, без ручного черчения.</div>
+</div>
+<div style="max-width:980px;margin:0 auto;padding:1.5rem 2rem 1rem;">
+  <div class="section-title" style="font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12);">Примеры чертежей</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;">
+    <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#1a2029;">
+      <img src="assets/autocad/draw-gasket.png" alt="AutoCAD AI — прокладка с отверстиями" loading="lazy" style="width:100%;display:block;">
+      <figcaption style="font-size:0.76rem;color:var(--text2);padding:0.6rem 0.85rem;">Прокладка с отверстиями и резьбой (Garnitura)</figcaption>
+    </figure>
+    <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#1a2029;">
+      <img src="assets/autocad/draw-views.png" alt="AutoCAD AI — виды детали" loading="lazy" style="width:100%;display:block;">
+      <figcaption style="font-size:0.76rem;color:var(--text2);padding:0.6rem 0.85rem;">Виды детали с размерами (Vederi)</figcaption>
+    </figure>
+    <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#1a2029;">
+      <img src="assets/autocad/draw-sections.png" alt="AutoCAD AI — сечение со штриховкой" loading="lazy" style="width:100%;display:block;">
+      <figcaption style="font-size:0.76rem;color:var(--text2);padding:0.6rem 0.85rem;">Сечение со штриховкой A–A (Secțiuni)</figcaption>
+    </figure>
+    <figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#1a2029;">
+      <img src="assets/autocad/draw-iso.png" alt="AutoCAD AI — виды и изометрия" loading="lazy" style="width:100%;display:block;">
+      <figcaption style="font-size:0.76rem;color:var(--text2);padding:0.6rem 0.85rem;">Ортогональные виды + изометрическая проекция (Izometrie)</figcaption>
+    </figure>
+  </div>
+  <div style="font-size:0.74rem;color:var(--text3);padding:0.6rem 0.2rem;">Разные типы инженерных чертежей, построенные автоматически в AutoCAD: прокладки, виды, сечения со штриховкой и изометрия.</div>
+</div>
+<div class="layout">
+  <div>
+    <div class="section">
+      <div class="section-title">О проекте</div>
+      <p class="section-text" data-i18nh="aboutp">AutoCAD AI превращает текстовое задание в готовый инженерный чертёж без ручного построения. Под капотом — Python, который по описанию рассчитывает геометрию и строит чертёж прямо в AutoCAD через COM-автоматизацию, а на выходе отдаёт нативные <strong style="color:var(--text)">DWG / DXF</strong>. Уже отрисовывает реальные учебно-инженерные задачи: прокладки, сопряжения, виды и сечения — с осевыми, размерами и отверстиями. Проект закрытый; ниже — разбор по фактам без внутренних деталей.</p>
+    </div>
+    <div class="section">
+      <div class="section-title">Что умеет</div>
+      <div class="features">
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6M12 4v16"/></svg></div><div class="fb"><h4>Чертёж из задания</h4><p>По текстовому описанию/спецификации строит весь чертёж целиком, а не отдельные примитивы. Параметрические варианты (var1, variant17…).</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="fb"><h4>Python + AutoCAD (COM)</h4><p>Скрипт подключается к AutoCAD через COM-автоматизацию и рисует геометрию программно — без кликов мышью.</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg></div><div class="fb"><h4>По-инженерному правильно</h4><p>Осевые линии, простановка размеров, шаблоны отверстий, штриховка сечений — как в нормальном чертеже, а не «линии на глаз».</p></div></div>
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div><div class="fb"><h4>Типы чертежей</h4><p>Прокладки (Garnitura), сопряжения (Racordări), виды (Vederi), сечения (Secțiuni). Вывод в DWG/DXF + PNG-превью.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sct">О проекте</div>
+      <div class="ir"><span class="il">Тип</span><span class="iv">AI + CAD инструмент</span></div>
+      <div class="ir"><span class="il">Стек</span><span class="iv">Python · AutoCAD COM</span></div>
+      <div class="ir"><span class="il">Ввод</span><span class="iv">текстовое задание</span></div>
+      <div class="ir"><span class="il">Выход</span><span class="iv a">DWG / DXF</span></div>
+      <div class="ir"><span class="il">Доступ</span><span class="iv">закрытый</span></div>
+      <div class="ir"><span class="il">Статус</span><span class="iv a">● В разработке</span></div>
+      <div class="ir"><span class="il">Роль</span><span class="iv">Автор / разработчик</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sct">Типы чертежей</div>
+      <div class="stack-list" style="padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem;">
+        <span style="padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2);">Прокладки</span>
+        <span style="padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2);">Сопряжения</span>
+        <span style="padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2);">Виды</span>
+        <span style="padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2);">Сечения</span>
+      </div>
+    </div>
+  </aside>
+</div>
+<script>
+window.I18N = {
+  en: {
+    "← Портфолио":"← Portfolio","Продукт · AI + CAD":"Product · AI + CAD","Prompt → чертёж · закрытая разработка":"Prompt → drawing · closed development",
+    "Инструмент, который создаёт чертежи высокой сложности по одному текстовому промту. Идея — убрать ручную трассировку: пользователь описывает деталь словами, система выдаёт готовый сложный чертёж.":"A tool that creates highly complex drawings from a single text prompt. The idea is to remove manual drafting: you describe a part in words and the system outputs a finished complex drawing.",
+    "Генерация чертежей":"Drawing generation","Автоматизация":"Automation",
+    "Закрытая разработка — общий разбор":"Closed development — general overview",
+    "Один промт":"One prompt","«начерти сложную деталь по описанию…»":"«draw a complex part from a description…»","AI-обработка":"AI processing","Интерпретация описания в геометрию и параметры":"Turning the description into geometry and parameters","Результат":"Result","Готовый чертёж в DWG / DXF":"Finished drawing in DWG / DXF",
+    "Пример сгенерированного чертежа: восьмиугольная прокладка с отверстиями, осевыми линиями и размерами — построено автоматически, без ручного черчения.":"Example of a generated drawing: an octagonal gasket with holes, center lines and dimensions — built automatically, without manual drafting.",
+    "О проекте":"About the project","Что умеет":"What it can do",
+    "Примеры чертежей":"Drawing examples",
+    "Прокладка с отверстиями и резьбой (Garnitura)":"Gasket with holes and thread (Garnitura)",
+    "Виды детали с размерами (Vederi)":"Part views with dimensions (Vederi)",
+    "Сечение со штриховкой A–A (Secțiuni)":"Section with A–A hatching (Secțiuni)",
+    "Ортогональные виды + изометрическая проекция (Izometrie)":"Orthographic views + isometric projection (Izometrie)",
+    "Разные типы инженерных чертежей, построенные автоматически в AutoCAD: прокладки, виды, сечения со штриховкой и изометрия.":"Different types of engineering drawings built automatically in AutoCAD: gaskets, views, hatched sections and isometry.",
+    "Чертёж из задания":"Drawing from a brief","По текстовому описанию/спецификации строит весь чертёж целиком, а не отдельные примитивы. Параметрические варианты (var1, variant17…).":"Builds the whole drawing from a text description/spec, not separate primitives. Parametric variants (var1, variant17…).",
+    "Python + AutoCAD (COM)":"Python + AutoCAD (COM)","Скрипт подключается к AutoCAD через COM-автоматизацию и рисует геометрию программно — без кликов мышью.":"The script connects to AutoCAD via COM automation and draws geometry programmatically — no mouse clicks.",
+    "По-инженерному правильно":"Engineering-correct","Осевые линии, простановка размеров, шаблоны отверстий, штриховка сечений — как в нормальном чертеже, а не «линии на глаз».":"Center lines, dimensioning, hole patterns, section hatching — like a proper drawing, not «lines by eye».",
+    "Типы чертежей":"Drawing types","Прокладки (Garnitura), сопряжения (Racordări), виды (Vederi), сечения (Secțiuni). Вывод в DWG/DXF + PNG-превью.":"Gaskets (Garnitura), fillets (Racordări), views (Vederi), sections (Secțiuni). Output to DWG/DXF + PNG previews.",
+    "Тип":"Type","Стек":"Stack","Ввод":"Input","Выход":"Output","Доступ":"Access","Статус":"Status","Роль":"Role",
+    "AI + CAD инструмент":"AI + CAD tool","текстовое задание":"text brief","закрытый":"closed","● В разработке":"● In development","Автор / разработчик":"Author / developer",
+    "Прокладки":"Gaskets","Сопряжения":"Fillets","Виды":"Views","Сечения":"Sections"
+  },
+  zh: {
+    "← Портфолио":"← 作品集","Продукт · AI + CAD":"产品 · AI + CAD","Prompt → чертёж · закрытая разработка":"Prompt → 图纸 · 闭源开发",
+    "Инструмент, который создаёт чертежи высокой сложности по одному текстовому промту. Идея — убрать ручную трассировку: пользователь описывает деталь словами, система выдаёт готовый сложный чертёж.":"一个通过单条文本提示生成高复杂度图纸的工具。理念是免去手工绘制：你用文字描述零件，系统输出完整的复杂图纸。",
+    "Генерация чертежей":"图纸生成","Автоматизация":"自动化",
+    "Закрытая разработка — общий разбор":"闭源开发 —— 概要说明",
+    "Один промт":"一条提示","«начерти сложную деталь по описанию…»":"「按描述绘制复杂零件…」","AI-обработка":"AI 处理","Интерпретация описания в геометрию и параметры":"将描述转化为几何与参数","Результат":"结果","Готовый чертёж в DWG / DXF":"DWG / DXF 成品图纸",
+    "Пример сгенерированного чертежа: восьмиугольная прокладка с отверстиями, осевыми линиями и размерами — построено автоматически, без ручного черчения.":"生成图纸示例：带孔、中心线与尺寸的八边形垫片 —— 自动生成，无需手工绘制。",
+    "О проекте":"关于项目","Что умеет":"功能",
+    "Примеры чертежей":"图纸示例",
+    "Прокладка с отверстиями и резьбой (Garnitura)":"带孔与螺纹的垫片（Garnitura）",
+    "Виды детали с размерами (Vederi)":"带尺寸的零件视图（Vederi）",
+    "Сечение со штриховкой A–A (Secțiuni)":"A–A 剖面填充（Secțiuni）",
+    "Ортогональные виды + изометрическая проекция (Izometrie)":"正交视图 + 等轴测投影（Izometrie）",
+    "Разные типы инженерных чертежей, построенные автоматически в AutoCAD: прокладки, виды, сечения со штриховкой и изометрия.":"在 AutoCAD 中自动生成的多种工程图纸：垫片、视图、带填充的剖面与等轴测。",
+    "Чертёж из задания":"按任务出图","По текстовому описанию/спецификации строит весь чертёж целиком, а не отдельные примитивы. Параметрические варианты (var1, variant17…).":"根据文本描述/规格生成整张图纸，而非零散图元。参数化变体（var1、variant17…）。",
+    "Python + AutoCAD (COM)":"Python + AutoCAD (COM)","Скрипт подключается к AutoCAD через COM-автоматизацию и рисует геометрию программно — без кликов мышью.":"脚本通过 COM 自动化连接 AutoCAD，以编程方式绘制几何 —— 无需鼠标点击。",
+    "По-инженерному правильно":"符合工程规范","Осевые линии, простановка размеров, шаблоны отверстий, штриховка сечений — как в нормальном чертеже, а не «линии на глаз».":"中心线、尺寸标注、孔位、剖面填充 —— 如同正规图纸，而非「凭眼画线」。",
+    "Типы чертежей":"图纸类型","Прокладки (Garnitura), сопряжения (Racordări), виды (Vederi), сечения (Secțiuni). Вывод в DWG/DXF + PNG-превью.":"垫片（Garnitura）、圆角（Racordări）、视图（Vederi）、剖面（Secțiuni）。输出 DWG/DXF + PNG 预览。",
+    "Тип":"类型","Стек":"技术栈","Ввод":"输入","Выход":"输出","Доступ":"访问","Статус":"状态","Роль":"角色",
+    "AI + CAD инструмент":"AI + CAD 工具","текстовое задание":"文本任务","закрытый":"闭源","● В разработке":"● 开发中","Автор / разработчик":"作者 / 开发者",
+    "Прокладки":"垫片","Сопряжения":"圆角","Виды":"视图","Сечения":"剖面"
+  },
+  h: {
+    aboutp: {
+      en:`AutoCAD AI turns a text brief into a finished engineering drawing with no manual construction. Under the hood — Python that computes the geometry from the description and draws it straight in AutoCAD via COM automation, outputting native <strong style="color:var(--text)">DWG / DXF</strong>. It already produces real engineering tasks: gaskets, fillets, views and sections — with center lines, dimensions and holes. The project is closed; below is a factual overview without internals.`,
+      zh:`AutoCAD AI 将文本任务转化为完整的工程图纸，无需手工绘制。底层是 Python：根据描述计算几何，并通过 COM 自动化直接在 AutoCAD 中绘制，输出原生 <strong style="color:var(--text)">DWG / DXF</strong>。已能生成真实工程任务：垫片、圆角、视图与剖面 —— 含中心线、尺寸与孔位。项目闭源；以下为事实概述，不含内部细节。`
+    }
+  }
+};
+</script>
+<script src="assets/i18n.js"></script>
+</body>
+</html>
