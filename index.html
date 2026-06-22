@@ -155,7 +155,7 @@
   .about-resume-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.75rem; padding: 0.7rem 1.4rem; border: 1px solid var(--border2); border-radius: 100px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--text); transition: all 0.2s; }
   .about-resume-link:hover { border-color: var(--accent); color: var(--accent); }
   .about-holo { width: 100%; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: #0a0b0a; }
-  .about-holo iframe { width: 100%; aspect-ratio: 1 / 1; border: 0; display: block; }
+  .about-holo video { width: 100%; aspect-ratio: 1 / 1; display: block; object-fit: cover; }
   .why { padding: 1rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; transition: border-color 0.2s; }
   .why:hover { border-color: var(--border2); }
   .why b { display: block; font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
@@ -457,9 +457,9 @@
 
 <section id="about" class="fade-in">
   <div class="section-label">Обо мне</div>
-  <h2 class="section-title" data-i18nh="aboutt">Кто я</h2>
   <div class="about-layout">
     <div>
+      <h2 class="section-title" data-i18nh="aboutt" style="margin-bottom:1.5rem;">Кто я</h2>
       <div class="about-text" data-i18nh="abouttxt" style="max-width:720px;">
         <p>Специалист на стыке digital-маркетинга, веб-разработки и создания продуктов. Настраиваю и веду рекламные кампании, занимаюсь SEO, монтирую видео и разрабатываю сайты.</p>
         <p>В свободное время развиваюсь как инди-разработчик — создаю AI-агентов, ботов, медиа-конвейеры и инструменты с машинным обучением (<strong>FreePalp</strong>, <strong>DeepBridge</strong>, <strong>AMP</strong>, <strong>Nexura</strong>). Быстро обучаюсь, работаю аккуратно и в срок.</p>
@@ -467,7 +467,10 @@
       <a href="resume.html" class="about-resume-link">Открыть полное резюме →</a>
     </div>
     <div class="about-holo">
-      <iframe src="assets/holo.html" title="Голографический портрет" loading="lazy" scrolling="no"></iframe>
+      <video poster="assets/holo/holo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Голографический портрет">
+        <source src="assets/holo/holo.webm" type="video/webm">
+        <source src="assets/holo/holo.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
