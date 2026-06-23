@@ -104,11 +104,11 @@
 
 <div class="filters-wrap">
   <div class="filters">
-    <button class="filter-btn active" onclick="filter('ai',this)">AI</button>
+    <button class="filter-btn active" onclick="filter('all',this)">Все</button>
+    <button class="filter-btn" onclick="filter('ai',this)">AI</button>
     <button class="filter-btn" onclick="filter('automation',this)">Автоматизация</button>
     <button class="filter-btn" onclick="filter('web',this)">Сайты</button>
     <button class="filter-btn" onclick="filter('seo',this)">SEO / Контент</button>
-    <button class="filter-btn" onclick="filter('all',this)">Все</button>
   </div>
 </div>
 
@@ -251,7 +251,7 @@
     });
     document.getElementById('empty').classList.toggle('show', visible === 0);
   }
-  filter('ai', document.querySelector('.filter-btn'));
+  filter('all', document.querySelector('.filter-btn'));
 </script>
 <script>
 window.I18N = {
