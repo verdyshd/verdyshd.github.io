@@ -136,6 +136,8 @@
     .topbar { padding: 1rem 1.25rem; }
     .cv-wrap { padding: 2rem 1.25rem 4rem; }
   }
+
+  *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
 </style>
 </head>
 <body>
@@ -348,7 +350,7 @@ const I18N = {
     "Холодные звонки и привлечение клиентов":"Cold calls and client acquisition","Ведение клиентской базы в CRM":"Maintaining the client base in CRM","Поиск перевозчиков и координация сторон":"Finding carriers and coordinating parties","Сопровождение клиентов до завершения услуги":"Supporting clients until service completion","Лидогенерация":"Lead generation","Аналитика конверсии":"Conversion analytics",
     "Навыки":"Skills","Маркетинг":"Marketing","Разработка & дизайн":"Development & design","Видео & контент":"Video & content","Продукты & AI":"Products & AI",
     "Видеомонтаж":"Video editing","Цветокоррекция":"Color grading","Баннеры":"Banners","Боты":"Bots","AI-инструменты":"AI tools",
-    "Образование":"Education","Информационные системы и технологии в бизнесе":"Information systems and technologies in business","В процессе":"In progress","Лицей «Светоч»":"Svetoch Lyceum","Среднее образование":"Secondary education",
+    "Образование":"Education","МФЮА":"MFUA","Информационные системы и технологии в бизнесе":"Information systems and technologies in business","В процессе":"In progress","Лицей «Светоч»":"Svetoch Lyceum","Среднее образование":"Secondary education",
     "Языки":"Languages","Русский":"Russian","Родной":"Native","Английский":"English","Базовый":"Basic"
   },
   zh: {
@@ -366,7 +368,7 @@ const I18N = {
     "Холодные звонки и привлечение клиентов":"陌生电话与客户开发","Ведение клиентской базы в CRM":"在 CRM 中维护客户库","Поиск перевозчиков и координация сторон":"寻找承运商并协调各方","Сопровождение клиентов до завершения услуги":"跟进客户直至服务完成","Лидогенерация":"获客","Аналитика конверсии":"转化分析",
     "Навыки":"技能","Маркетинг":"营销","Разработка & дизайн":"开发与设计","Видео & контент":"视频与内容","Продукты & AI":"产品与 AI",
     "Видеомонтаж":"视频剪辑","Цветокоррекция":"调色","Баннеры":"横幅","Боты":"机器人","AI-инструменты":"AI 工具",
-    "Образование":"教育","Информационные системы и технологии в бизнесе":"商业信息系统与技术","В процессе":"进行中","Лицей «Светоч»":"«Светоч» 中学","Среднее образование":"中学教育",
+    "Образование":"教育","МФЮА":"MFUA","Информационные системы и технологии в бизнесе":"商业信息系统与技术","В процессе":"进行中","Лицей «Светоч»":"Svetoch 中学","Среднее образование":"中学教育",
     "Языки":"语言","Русский":"俄语","Родной":"母语","Английский":"英语","Базовый":"基础"
   },
   h: {}
@@ -400,5 +402,6 @@ function setLang(lang){
 }
 (function(){ let s='ru'; try{ s = localStorage.getItem('lang') || 'ru'; }catch(e){} setLang(s); })();
 </script>
+<footer style="border-top:1px solid rgba(255,255,255,0.08);max-width:1000px;margin:3rem auto 0;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;font-family:'Syne',sans-serif;"><span style="font-weight:800;font-size:0.95rem;color:#f0ede8;">DV<span style="color:#c8ff00;">.</span></span><span style="font-size:0.8rem;color:#666;">© 2026 Дмитрий Вердыш · <a href="mailto:verdyshd@gmail.com" style="color:#666;">verdyshd@gmail.com</a></span></footer>
 </body>
 </html>

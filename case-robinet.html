@@ -82,6 +82,8 @@
   .stack-list { padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem; }
   .st { padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2); }
   .sidebar { position:sticky;top:80px; }
+
+  *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
 </style>
 </head>
 <body>
@@ -125,7 +127,7 @@
     <span class="ba-badge ba-do">ДО</span>
     <span class="ba-badge ba-posle">ПОСЛЕ</span>
     <div class="ba-line" id="baLine"></div>
-    <div class="ba-knob" id="baKnob">⟺</div>
+    <div class="ba-knob" id="baKnob" role="slider" tabindex="0" aria-label="Ползунок сравнения: до и после" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">⟺</div>
   </div>
   <figcaption style="font-size:0.74rem;color:var(--text3);padding:0.6rem 0.2rem;">Перетащи ползунок: слева — версия «до», справа — после редизайна. «После» — текущий robinet.md.</figcaption>
 </div>
@@ -153,13 +155,19 @@
   var ba=document.getElementById('ba'); if(!ba) return;
   var line=document.getElementById('baLine'), knob=document.getElementById('baKnob');
   var before=ba.querySelector('.ba-before')||ba.querySelector('.ba-ph');
-  function set(p){ p=Math.max(0,Math.min(100,p)); before.style.clipPath='inset(0 '+(100-p)+'% 0 0)'; line.style.left=p+'%'; knob.style.left=p+'%'; }
+  var pos=50;
+  function set(p){ pos=Math.max(0,Math.min(100,p)); before.style.clipPath='inset(0 '+(100-pos)+'% 0 0)'; line.style.left=pos+'%'; knob.style.left=pos+'%'; knob.setAttribute('aria-valuenow',Math.round(pos)); }
   function fromEvent(e){ var r=ba.getBoundingClientRect(); set((e.clientX-r.left)/r.width*100); }
   var drag=false;
-  knob.addEventListener('pointerdown',function(e){ drag=true; try{knob.setPointerCapture(e.pointerId);}catch(_){} e.preventDefault(); });
-  knob.addEventListener('pointermove',function(e){ if(drag) fromEvent(e); });
-  knob.addEventListener('pointerup',function(){ drag=false; });
-  knob.addEventListener('pointercancel',function(){ drag=false; });
+  knob.addEventListener('pointerdown',function(e){ drag=true; try{knob.focus();}catch(_){} try{knob.setPointerCapture(e.pointerId);}catch(_){} e.preventDefault(); });
+  window.addEventListener('pointermove',function(e){ if(drag) fromEvent(e); });
+  window.addEventListener('pointerup',function(){ drag=false; });
+  window.addEventListener('pointercancel',function(){ drag=false; });
+  knob.addEventListener('keydown',function(e){ var step=(e.shiftKey?10:2);
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown'){ set(pos-step); e.preventDefault(); }
+    else if(e.key==='ArrowRight'||e.key==='ArrowUp'){ set(pos+step); e.preventDefault(); }
+    else if(e.key==='Home'){ set(0); e.preventDefault(); }
+    else if(e.key==='End'){ set(100); e.preventDefault(); } });
   set(50);
 })();
 </script>
@@ -239,5 +247,6 @@ window.I18N = {
 };
 </script>
 <script src="assets/i18n.js"></script>
+<footer style="border-top:1px solid rgba(255,255,255,0.08);max-width:1000px;margin:3rem auto 0;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;font-family:'Syne',sans-serif;"><span style="font-weight:800;font-size:0.95rem;color:#f0ede8;">DV<span style="color:#c8ff00;">.</span></span><span style="font-size:0.8rem;color:#666;">© 2026 Дмитрий Вердыш · <a href="mailto:verdyshd@gmail.com" style="color:#666;">verdyshd@gmail.com</a></span></footer>
 </body>
 </html>
