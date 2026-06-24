@@ -75,11 +75,11 @@
     </div>
     <div>
       <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;">Продукт · Инди-разработка</div>
-      <div style="font-size:0.82rem;color:var(--text3);">DeepGate → DeepBridge</div>
+      <div style="font-size:0.82rem;color:var(--text3);">AIOSE · AI OS Environment</div>
     </div>
   </div>
   <h1>Deep<span>Bridge</span></h1>
-  <p class="hero-desc" data-i18nh="herodesc">Локальный мост между браузерным DeepSeek и полноценным AI-агентом с инструментами. Текущий рабочий прототип линейки: ранний <strong style="color:var(--text)">DeepGate</strong> был убран из-за неверного подхода, на смену пришёл более устойчивый <strong style="color:var(--text)">DeepBridge</strong> — перехват и инжект запросов через браузер, управление сессиями, инструменты файловой системы и shell в Web UI.</p>
+  <p class="hero-desc" data-i18nh="herodesc">DeepBridge — текущий рабочий прототип <strong style="color:var(--text)">AIOSE</strong> (AI OS Environment), среды для ИИ, которую я развиваю давно: локальный мост между браузерным DeepSeek и полноценным AI-агентом с инструментами. Ранний <strong style="color:var(--text)">DeepGate</strong> был убран из-за неверного подхода — на смену пришёл более устойчивый <strong style="color:var(--text)">DeepBridge</strong>: перехват и инжект запросов через браузер, управление сессиями, инструменты файловой системы и shell в Web UI.</p>
   <div class="hero-tags">
     <span class="tag a">Python</span><span class="tag a">Flask</span><span class="tag a">Playwright</span>
     <span class="tag">DeepSeek</span><span class="tag">CDP</span><span class="tag">Web UI</span>
@@ -117,6 +117,7 @@
     <div class="section">
       <div class="section-title">Эволюция подхода</div>
       <div class="features">
+        <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="fb"><h4>AIOSE <span class="badge">линия</span></h4><p>AI OS Environment — обобщённое имя линии, среда для ИИ, развиваемая задолго до. DeepGate и DeepBridge — итерации внутри неё.</p></div></div>
         <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l14.14 14.14"/></svg></div><div class="fb"><h4 style="color:var(--text3)">DeepGate <span class="badge" style="background:rgba(255,255,255,0.06);color:var(--text3)">убран</span></h4><p>Первый подход к перехвату. Оказался неустойчивым и архитектурно неверным — снят с разработки.</p></div></div>
         <div class="feature"><div class="fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8ff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div><div class="fb"><h4>DeepBridge <span class="badge">текущий</span></h4><p>Переосмысленный мост: более устойчивое управление сессиями и инжектом. Рабочий прототип, требует доработки.</p></div></div>
       </div>
@@ -138,7 +139,7 @@
       <div class="sct">О проекте</div>
       <div class="ir"><span class="il">Тип</span><span class="iv">Local AI Bridge</span></div>
       <div class="ir"><span class="il">AI</span><span class="iv">DeepSeek (via CDP)</span></div>
-      <div class="ir"><span class="il">Линейка</span><span class="iv">DeepGate → DeepBridge</span></div>
+      <div class="ir"><span class="il">Линейка</span><span class="iv">AIOSE: DeepGate → DeepBridge</span></div>
       <div class="ir"><span class="il">Платформа</span><span class="iv">Windows</span></div>
       <div class="ir"><span class="il">Статус</span><span class="iv a">● Прототип · доработка</span></div>
       <div class="ir"><span class="il">Роль</span><span class="iv">Автор / разработчик</span></div>
@@ -161,6 +162,7 @@ window.I18N = {
     "О проекте":"About the project",
     "DeepBridge — локальный мост, который превращает браузерный DeepSeek в полноценного AI-агента с доступом к файловой системе, терминалу и браузеру. Flask-сервер поднимается локально, Playwright управляет Chrome через CDP, а Web UI даёт интерфейс в стиле DeepSeek с поддержкой инструментов.":"DeepBridge is a local bridge that turns browser DeepSeek into a full AI agent with access to the file system, terminal and browser. A Flask server runs locally, Playwright drives Chrome via CDP, and the Web UI provides a DeepSeek-style interface with tool support.",
     "Эволюция подхода":"Approach evolution",
+    "линия":"line","AI OS Environment — обобщённое имя линии, среда для ИИ, развиваемая задолго до. DeepGate и DeepBridge — итерации внутри неё.":"AI OS Environment — the umbrella name of the line, an environment for AI developed long before. DeepGate and DeepBridge are iterations within it.",
     "убран":"removed","Первый подход к перехвату. Оказался неустойчивым и архитектурно неверным — снят с разработки.":"The first interception approach. It proved unstable and architecturally wrong — discontinued.",
     "текущий":"current","Переосмысленный мост: более устойчивое управление сессиями и инжектом. Рабочий прототип, требует доработки.":"A rethought bridge: more stable session and injection handling. A working prototype, needs refinement.",
     "Ключевые системы":"Key systems","уникально":"unique",
@@ -183,6 +185,7 @@ window.I18N = {
     "О проекте":"关于项目",
     "DeepBridge — локальный мост, который превращает браузерный DeepSeek в полноценного AI-агента с доступом к файловой системе, терминалу и браузеру. Flask-сервер поднимается локально, Playwright управляет Chrome через CDP, а Web UI даёт интерфейс в стиле DeepSeek с поддержкой инструментов.":"DeepBridge 是一座本地桥接，将浏览器版 DeepSeek 变为可访问文件系统、终端与浏览器的完整 AI 智能体。Flask 服务本地运行，Playwright 通过 CDP 控制 Chrome，Web UI 提供 DeepSeek 风格、支持工具的界面。",
     "Эволюция подхода":"思路演进",
+    "линия":"系列","AI OS Environment — обобщённое имя линии, среда для ИИ, развиваемая задолго до. DeepGate и DeepBridge — итерации внутри неё.":"AI OS Environment —— 整个系列的总称，一个早已开始打造的「面向 AI 的环境」。DeepGate 与 DeepBridge 是其中的迭代。",
     "убран":"已弃","Первый подход к перехвату. Оказался неустойчивым и архитектурно неверным — снят с разработки.":"最初的拦截方案。被证明不稳定且架构有误 —— 已停止开发。",
     "текущий":"当前","Переосмысленный мост: более устойчивое управление сессиями и инжектом. Рабочий прототип, требует доработки.":"重新设计的桥接：会话与注入更稳定。可用原型，仍需完善。",
     "Ключевые системы":"核心系统","уникально":"独特",
@@ -201,8 +204,8 @@ window.I18N = {
   },
   h: {
     herodesc: {
-      en:`A local bridge between browser DeepSeek and a full AI agent with tools. The current working prototype of the line: the early <strong style="color:var(--text)">DeepGate</strong> was dropped for a wrong approach, replaced by the more stable <strong style="color:var(--text)">DeepBridge</strong> — intercepting and injecting requests via the browser, session management, file-system and shell tools in a Web UI.`,
-      zh:`浏览器版 DeepSeek 与带工具的完整 AI 智能体之间的本地桥接。该系列当前的可用原型：早期的 <strong style="color:var(--text)">DeepGate</strong> 因思路有误而弃用，由更稳定的 <strong style="color:var(--text)">DeepBridge</strong> 取代 —— 通过浏览器拦截与注入请求、会话管理、Web UI 中的文件系统与 shell 工具。`
+      en:`DeepBridge is the current working prototype of <strong style="color:var(--text)">AIOSE</strong> (AI OS Environment) — an environment for AI I've been building for a long time: a local bridge between browser DeepSeek and a full AI agent with tools. The early <strong style="color:var(--text)">DeepGate</strong> was dropped for a wrong approach — replaced by the more stable <strong style="color:var(--text)">DeepBridge</strong>: intercepting and injecting requests via the browser, session management, file-system and shell tools in a Web UI.`,
+      zh:`DeepBridge 是 <strong style="color:var(--text)">AIOSE</strong>（AI OS Environment）的当前可用原型 —— 一个我长期打造的「面向 AI 的环境」：浏览器版 DeepSeek 与带工具的完整 AI 智能体之间的本地桥接。早期的 <strong style="color:var(--text)">DeepGate</strong> 因思路有误而弃用 —— 由更稳定的 <strong style="color:var(--text)">DeepBridge</strong> 取代：通过浏览器拦截与注入请求、会话管理、Web UI 中的文件系统与 shell 工具。`
     }
   }
 };
