@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://verdyshd.github.io/sitemap.xml
