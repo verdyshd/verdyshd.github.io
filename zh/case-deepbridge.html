@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d0d0d'/%3E%3Ctext x='50' y='64' font-family='Arial,sans-serif' font-size='44' font-weight='bold' fill='%23f0ede8' text-anchor='middle'%3EDV%3Ctspan fill='%23c8ff00'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" rel="icon"/>
+<meta content="DeepBridge —— AIOSE（AI OS Environment）系列的当前原型：浏览器版 DeepSeek 通过 CDP 成为可访问文件与 shell 的 AI 智能体。" name="description"/>
+<link href="https://verdyshd.github.io/zh/case-deepbridge.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="https://verdyshd.github.io/zh/case-deepbridge.html" property="og:url"/>
+<meta content="DeepBridge (AIOSE) — 本地 AI 桥接" property="og:title"/>
+<meta content="DeepBridge —— AIOSE（AI OS Environment）系列的当前原型：浏览器版 DeepSeek 通过 CDP 成为可访问文件与 shell 的 AI 智能体。" property="og:description"/>
+<meta content="https://verdyshd.github.io/assets/og.png" property="og:image"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="Дмитрий Вердыш" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="DeepBridge (AIOSE) — 本地 AI 桥接" name="twitter:title"/>
+<meta content="DeepBridge —— AIOSE（AI OS Environment）系列的当前原型：浏览器版 DeepSeek 通过 CDP 成为可访问文件与 shell 的 AI 智能体。" name="twitter:description"/>
+<meta content="https://verdyshd.github.io/assets/og.png" name="twitter:image"/>
+<title>DeepBridge (AIOSE) — 本地 AI 桥接</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg:#0d0d0d;--bg2:#161616;--bg3:#1f1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0ede8;--text2:#a0a0a0;--text3:#888;--accent:#c8ff00; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6; }
+  h1,h2,h3 { font-family:'Syne',sans-serif; }
+  a { color:inherit;text-decoration:none; }
+  .topbar { position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center; }
+  .nav-logo { font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em; }
+  .nav-logo span { color:var(--accent); }
+  .back-btn { font-size:0.85rem;color:var(--text2);font-family:'Syne',sans-serif;font-weight:600;transition:color 0.2s; }
+  .back-btn:hover { color:var(--accent); }
+  .hero { max-width:980px;margin:0 auto;padding:4rem 2rem 0; }
+  .hero-top { display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem; }
+  .project-icon { width:64px;height:64px;border-radius:14px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .hero h1 { font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem; }
+  .hero h1 span { color:var(--accent); }
+  .hero-desc { font-size:1rem;color:var(--text2);max-width:660px;line-height:1.75;margin-bottom:2rem; }
+  .hero-tags { display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem; }
+  .tag { padding:0.35rem 0.9rem;border:1px solid var(--border2);border-radius:100px;font-size:0.78rem;color:var(--text2); }
+  .tag.a { border-color:rgba(200,255,0,0.3);color:var(--accent);background:rgba(200,255,0,0.05); }
+  .dl-btn { display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--accent);color:#0d0d0d;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.875rem;transition:all 0.2s;margin-bottom:2.5rem; }
+  .dl-btn:hover { background:#a8d900;transform:translateY(-1px); }
+  .hero-divider { height:1px;background:var(--border);margin-bottom:3rem; }
+  .layout { max-width:980px;margin:0 auto;padding:0 2rem 5rem;display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start; }
+  @media(max-width:768px){.layout{grid-template-columns:1fr}.topbar,.hero{padding-left:1.25rem;padding-right:1.25rem}.layout{padding:0 1.25rem 4rem}}
+  .section { margin-bottom:2.5rem; }
+  .section-title { font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12); }
+  .section-text { font-size:0.92rem;color:var(--text2);line-height:1.75; }
+  .features { display:flex;flex-direction:column;gap:0.85rem; }
+  .feature { display:flex;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;transition:border-color 0.2s; }
+  .feature:hover { border-color:var(--border2); }
+  .fi { width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+  .fb h4 { font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;margin-bottom:0.25rem; }
+  .fb p { font-size:0.82rem;color:var(--text2);line-height:1.6; }
+  .badge { display:inline-block;margin-left:0.4rem;font-size:0.6rem;padding:0.1rem 0.4rem;background:rgba(200,255,0,0.12);color:var(--accent);border-radius:100px;vertical-align:middle;font-weight:700; }
+  .sidebar-card { background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem; }
+  .sct { font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);padding:1rem 1.25rem 0;margin-bottom:0.75rem; }
+  .ir { display:flex;justify-content:space-between;align-items:center;padding:0.6rem 1.25rem;border-top:1px solid var(--border);font-size:0.83rem; }
+  .ir:first-of-type { border-top:none; }
+  .il { color:var(--text3); }
+  .iv { color:var(--text);font-weight:500; }
+  .iv.a { color:var(--accent); }
+  .stack-list { padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem; }
+  .st { padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2); }
+  .sidebar { position:sticky;top:80px; }
+
+  *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
+</style>
+<link href="https://verdyshd.github.io/case-deepbridge.html" hreflang="ru" rel="alternate"/><link href="https://verdyshd.github.io/en/case-deepbridge.html" hreflang="en" rel="alternate"/><link href="https://verdyshd.github.io/zh/case-deepbridge.html" hreflang="zh-Hans" rel="alternate"/><link href="https://verdyshd.github.io/case-deepbridge.html" hreflang="x-default" rel="alternate"/></head>
+<body>
+<div class="topbar">
+<a class="back-btn" href="/zh/portfolio.html">← 作品集</a>
+<div style="display:flex;align-items:center;gap:1rem">
+<div class="lang-switch"><a class="lang-btn" href="/case-deepbridge.html">RU</a><a class="lang-btn" href="/en/case-deepbridge.html">EN</a><a class="lang-btn active" href="/zh/case-deepbridge.html">中文</a></div>
+<div class="nav-logo">DV<span>.</span></div>
+</div>
+</div>
+<div class="hero">
+<div class="hero-top">
+<div class="project-icon">
+<svg fill="none" height="30" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="30"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path><path d="M7 8l3 3-3 3"></path><line x1="13" x2="17" y1="11" y2="11"></line></svg>
+</div>
+<div>
+<div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;">产品 · 独立开发</div>
+<div style="font-size:0.82rem;color:var(--text3);">AIOSE · AI OS Environment</div>
+</div>
+</div>
+<h1>Deep<span>Bridge</span></h1>
+<p class="hero-desc" data-i18nh="herodesc">DeepBridge 是 <strong style="color:var(--text)">AIOSE</strong>（AI OS Environment）的当前可用原型 —— 一个我长期打造的「面向 AI 的环境」：浏览器版 DeepSeek 与带工具的完整 AI 智能体之间的本地桥接。早期的 <strong style="color:var(--text)">DeepGate</strong> 因思路有误而弃用 —— 由更稳定的 <strong style="color:var(--text)">DeepBridge</strong> 取代：通过浏览器拦截与注入请求、会话管理、Web UI 中的文件系统与 shell 工具。</p>
+<div class="hero-tags">
+<span class="tag a">Python</span><span class="tag a">Flask</span><span class="tag a">Playwright</span>
+<span class="tag">DeepSeek</span><span class="tag">CDP</span><span class="tag">Web UI</span>
+<span class="tag">File Tools</span><span class="tag">Shell Tools</span><span class="tag">Streaming</span>
+</div>
+<div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.3rem;border:1px solid var(--border2);border-radius:100px;color:var(--text2);font-size:0.85rem;margin-bottom:2.5rem;">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15"><rect height="11" rx="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+    仅供了解 —— 不分发源码
+  </div>
+<div class="hero-divider"></div>
+</div>
+<div style="max-width:980px;margin:0 auto;padding:0 2rem 1rem;">
+<div style="font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12);">界面</div>
+<figure style="margin:0 0 1rem;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+<img alt="DeepBridge — выполнение инструментов" loading="lazy" src="/assets/deepbridge/tools.png" style="width:100%;display:block;"/>
+<figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;line-height:1.5;">智能体执行一组工具（cmd、文件读写）—— 带状态、耗时与最终结果</figcaption>
+</figure>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+<figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+<img alt="DeepBridge — Web UI" loading="lazy" src="/assets/deepbridge/ui.png" style="width:100%;display:block;"/>
+<figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;line-height:1.5;">Web UI：会话列表、历史搜索、「深度思考」/「智能搜索」模式</figcaption>
+</figure>
+<figure style="margin:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+<img alt="DeepBridge — рассуждение и запуск инструментов" loading="lazy" src="/assets/deepbridge/agent.png" style="width:100%;display:block;"/>
+<figcaption style="font-size:0.78rem;color:var(--text2);padding:0.65rem 0.9rem;line-height:1.5;">在同一流程中完成推理、代码生成与工具调用</figcaption>
+</figure>
+</div>
+</div>
+<div class="layout">
+<div>
+<div class="section">
+<div class="section-title">关于项目</div>
+<p class="section-text">DeepBridge 是一座本地桥接，将浏览器版 DeepSeek 变为可访问文件系统、终端与浏览器的完整 AI 智能体。Flask 服务本地运行，Playwright 通过 CDP 控制 Chrome，Web UI 提供 DeepSeek 风格、支持工具的界面。</p>
+</div>
+<div class="section">
+<div class="section-title">思路演进</div>
+<div class="features">
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="fb"><h4>AIOSE <span class="badge">系列</span></h4><p>AI OS Environment —— 整个系列的总称，一个早已开始打造的「面向 AI 的环境」。DeepGate 与 DeepBridge 是其中的迭代。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="10"></circle><path d="M4.93 4.93l14.14 14.14"></path></svg></div><div class="fb"><h4 style="color:var(--text3)">DeepGate <span class="badge" style="background:rgba(255,255,255,0.06);color:var(--text3)">已弃</span></h4><p>最初的拦截方案。被证明不稳定且架构有误 —— 已停止开发。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M9 18l6-6-6-6"></path></svg></div><div class="fb"><h4>DeepBridge <span class="badge">当前</span></h4><p>重新设计的桥接：会话与注入更稳定。可用原型，仍需完善。</p></div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">核心系统</div>
+<div class="features">
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="12" r="10"></circle><path d="M4.93 4.93l14.14 14.14"></path></svg></div><div class="fb"><h4>CDP Bridge <span class="badge">独特</span></h4><p>通过 Chrome DevTools Protocol 控制 Chrome，无需官方 API 即可拦截并注入对 DeepSeek 的请求。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg></div><div class="fb"><h4>File System Tools</h4><p>智能体在工作目录中读写与删除文件。防护：路径穿越校验、目录白名单、受保护文件。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" x2="20" y1="19" y2="19"></line></svg></div><div class="fb"><h4>Shell Tools</h4><p>通过智能体执行终端命令。命令白名单校验、捕获 stdout/stderr、防止破坏性操作。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><rect height="16" rx="2" width="18" x="3" y="4"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div><div class="fb"><h4>Session Management</h4><p>聊天会话管理：历史、导出、右键菜单与 token 统计。完整的对话生命周期。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path></svg></div><div class="fb"><h4>DeepSeek 风格 Web UI</h4><p>极简界面：侧栏、模式（Think / Normal）、快捷键、主题与历史搜索。20+ UI 测试截图。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="fb"><h4>令牌鉴权</h4><p>重启时从文件加载持久访问令牌。防止对本地服务器的未授权访问。</p></div></div>
+</div>
+</div>
+</div>
+<aside class="sidebar">
+<div class="sidebar-card">
+<div class="sct">关于项目</div>
+<div class="ir"><span class="il">类型</span><span class="iv">Local AI Bridge</span></div>
+<div class="ir"><span class="il">AI</span><span class="iv">DeepSeek (via CDP)</span></div>
+<div class="ir"><span class="il">沿革</span><span class="iv">AIOSE: DeepGate → DeepBridge</span></div>
+<div class="ir"><span class="il">平台</span><span class="iv">Windows</span></div>
+<div class="ir"><span class="il">状态</span><span class="iv a">● 原型 · 完善中</span></div>
+<div class="ir"><span class="il">角色</span><span class="iv">作者 / 开发者</span></div>
+</div>
+<div class="sidebar-card">
+<div class="sct">技术栈</div>
+<div class="stack-list">
+<span class="st">Python 3</span><span class="st">Flask</span><span class="st">Playwright</span>
+<span class="st">CDP</span><span class="st">Chrome</span><span class="st">SSE Streaming</span>
+<span class="st">HTML/CSS/JS</span><span class="st">Inter Font</span>
+</div>
+</div>
+</aside>
+</div>
+<div style="max-width:1000px;margin:0 auto;padding:0 2rem 1rem;"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.6rem 1.9rem;display:flex;justify-content:space-between;align-items:center;gap:1.25rem;flex-wrap:wrap;"><div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.25rem;">需要类似的项目？</div><div style="font-size:0.88rem;color:var(--text2);">说说你的需求 —— 我会很快回复。</div></div><a href="https://t.me/+37360410819" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--accent);color:#0d0d0d;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.875rem;white-space:nowrap;">通过 Telegram 联系 →</a></div></div>
+
+
+<footer style="border-top:1px solid rgba(255,255,255,0.08);max-width:1000px;margin:3rem auto 0;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;font-family:'Syne',sans-serif;"><span style="font-weight:800;font-size:0.95rem;color:#f0ede8;">DV<span style="color:#c8ff00;">.</span></span><span style="font-size:0.8rem;color:#888;">© 2026 Дмитрий Вердыш · <a href="mailto:verdyshd@gmail.com" style="color:#888;">verdyshd@gmail.com</a></span></footer>
+</body>
+</html>

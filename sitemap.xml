@@ -1,12 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://verdyshd.github.io/</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/portfolio.html</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/resume.html</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/case-freepalp.html</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/case-deepbridge.html</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/case-nexura.html</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/case-robinet.html</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/case-autocad-ai.html</loc><lastmod>2026-06-25</lastmod></url>
-  <url><loc>https://verdyshd.github.io/case-freelance.html</loc><lastmod>2026-06-25</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://verdyshd.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/portfolio.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/portfolio.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/portfolio.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/resume.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/resume.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/resume.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/resume.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/resume.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/resume.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/case-freepalp.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-freepalp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-freepalp.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-freepalp.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/case-freepalp.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-freepalp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-freepalp.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-freepalp.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/case-freepalp.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-freepalp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-freepalp.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-freepalp.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/case-deepbridge.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-deepbridge.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-deepbridge.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-deepbridge.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/case-deepbridge.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-deepbridge.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-deepbridge.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-deepbridge.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/case-deepbridge.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-deepbridge.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-deepbridge.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-deepbridge.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/case-nexura.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-nexura.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-nexura.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-nexura.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/case-nexura.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-nexura.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-nexura.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-nexura.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/case-nexura.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-nexura.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-nexura.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-nexura.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/case-robinet.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-robinet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-robinet.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-robinet.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/case-robinet.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-robinet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-robinet.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-robinet.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/case-robinet.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-robinet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-robinet.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-robinet.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/case-autocad-ai.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-autocad-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-autocad-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-autocad-ai.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/case-autocad-ai.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-autocad-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-autocad-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-autocad-ai.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/case-autocad-ai.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-autocad-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-autocad-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-autocad-ai.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/case-freelance.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-freelance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-freelance.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-freelance.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/en/case-freelance.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-freelance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-freelance.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-freelance.html"/>
+    <lastmod>2026-06-25</lastmod></url>
+  <url><loc>https://verdyshd.github.io/zh/case-freelance.html</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://verdyshd.github.io/case-freelance.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://verdyshd.github.io/en/case-freelance.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://verdyshd.github.io/zh/case-freelance.html"/>
+    <lastmod>2026-06-25</lastmod></url>
 </urlset>

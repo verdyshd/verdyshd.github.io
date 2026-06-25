@@ -19,3 +19,6 @@ verify-*.png
 badge-examples/
 templates/
 badge-verdysh.html
+
+# build tooling (not part of published site)
+_build/
