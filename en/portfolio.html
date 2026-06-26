@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script>(function(){var p=location.pathname,c=/^\/en\//.test(p)?'en':/^\/zh\//.test(p)?'zh':'ru';try{var s=localStorage.getItem('lang');if(!s){var nl=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();s=nl.indexOf('zh')===0?'zh':nl.indexOf('en')===0?'en':nl.indexOf('ru')===0?'ru':'';}if(s&&s!==c){var f=p.replace(/^\/(en|zh)\//,'/');if(!/(case-amp|portfolio-cartum-preview)\.html/.test(f)){var pre=s==='en'?'/en':s==='zh'?'/zh':'';var t=f==='/'?pre+'/':pre+f;if(t!==p){location.replace(t);return;}}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.lang-switch a');if(a){var h=a.getAttribute('href')||'';var l=(/^\/en\//.test(h)||h==='/en/')?'en':(/^\/zh\//.test(h)||h==='/zh/')?'zh':'ru';try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
+<script>(function(){var p=location.pathname,c=/^\/en\//.test(p)?'en':/^\/zh\//.test(p)?'zh':'ru';try{var s=localStorage.getItem('lang');if(s&&s!==c){var f=p.replace(/^\/(en|zh)\//,'/');if(!/(case-amp|portfolio-cartum-preview)\.html/.test(f)){var pre=s==='en'?'/en':s==='zh'?'/zh':'';var t=f==='/'?pre+'/':pre+f;if(t!==p){location.replace(t);return;}}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.lang-switch a');if(a){var h=a.getAttribute('href')||'';var l=(/^\/en\//.test(h)||h==='/en/')?'en':(/^\/zh\//.test(h)||h==='/zh/')?'zh':'ru';try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
 <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d0d0d'/%3E%3Ctext x='50' y='64' font-family='Arial,sans-serif' font-size='44' font-weight='bold' fill='%23f0ede8' text-anchor='middle'%3EDV%3Ctspan fill='%23c8ff00'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" rel="icon"/>
 <meta content="Portfolio of Dmitrii Verdysh: own AI products (FreePalp, DeepBridge, AMP, Nexura), automation, websites and SEO projects." name="description"/>
 <link href="https://verdyshd.github.io/en/portfolio.html" rel="canonical"/>
@@ -263,5 +263,6 @@
 
 <footer style="border-top:1px solid rgba(255,255,255,0.08);max-width:1000px;margin:3rem auto 0;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;font-family:'Syne',sans-serif;"><span style="font-weight:800;font-size:0.95rem;color:#f0ede8;">DV<span style="color:#c8ff00;">.</span></span><span style="font-size:0.8rem;color:#888;">© 2026 Дмитрий Вердыш · <a href="mailto:verdyshd@gmail.com" style="color:#888;">verdyshd@gmail.com</a></span></footer>
 <script src="/assets/lightbox.js"></script>
+<script src="/assets/lang-banner.js"></script>
 </body>
 </html>
