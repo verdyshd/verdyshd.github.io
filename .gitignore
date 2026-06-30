@@ -22,3 +22,6 @@ badge-verdysh.html
 
 # build tooling (not part of published site)
 _build/
+
+# local preview (not published)
+preview-hero.html
