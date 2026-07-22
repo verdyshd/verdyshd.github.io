@@ -6,18 +6,18 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script>(function(){var p=location.pathname,c=/^\/en\//.test(p)?'en':/^\/zh\//.test(p)?'zh':'ru';try{var s=localStorage.getItem('lang');if(s&&s!==c){var f=p.replace(/^\/(en|zh)\//,'/');if(!/(case-amp|portfolio-cartum-preview)\.html/.test(f)){var pre=s==='en'?'/en':s==='zh'?'/zh':'';var t=f==='/'?pre+'/':pre+f;if(t!==p){location.replace(t);return;}}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.lang-switch a');if(a){var h=a.getAttribute('href')||'';var l=(/^\/en\//.test(h)||h==='/en/')?'en':(/^\/zh\//.test(h)||h==='/zh/')?'zh':'ru';try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
 <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d0d0d'/%3E%3Ctext x='50' y='64' font-family='Arial,sans-serif' font-size='44' font-weight='bold' fill='%23f0ede8' text-anchor='middle'%3EDV%3Ctspan fill='%23c8ff00'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" rel="icon"/>
-<meta content="Резюме Дмитрия Вердыша — digital-маркетолог, веб-разработчик и инди-создатель. Опыт в performance-рекламе, SEO, разработке и AI-инструментах." name="description"/>
+<meta content="Резюме Дмитрия Вердыша — digital-маркетолог, веб-разработчик и инди-разработчик. Опыт в performance-рекламе, SEO, разработке и AI-инструментах." name="description"/>
 <link href="https://verdyshd.github.io/resume.html" rel="canonical"/>
 <meta content="profile" property="og:type"/>
 <meta content="https://verdyshd.github.io/resume.html" property="og:url"/>
 <meta content="Резюме — Дмитрий Вердыш" property="og:title"/>
-<meta content="Резюме Дмитрия Вердыша — digital-маркетолог, веб-разработчик и инди-создатель. Опыт в performance-рекламе, SEO, разработке и AI-инструментах." property="og:description"/>
+<meta content="Резюме Дмитрия Вердыша — digital-маркетолог, веб-разработчик и инди-разработчик. Опыт в performance-рекламе, SEO, разработке и AI-инструментах." property="og:description"/>
 <meta content="https://verdyshd.github.io/assets/og.png" property="og:image"/>
 <meta content="ru_RU" property="og:locale"/>
 <meta content="Дмитрий Вердыш" property="og:site_name"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Резюме — Дмитрий Вердыш" name="twitter:title"/>
-<meta content="Резюме Дмитрия Вердыша — digital-маркетолог, веб-разработчик и инди-создатель. Опыт в performance-рекламе, SEO, разработке и AI-инструментах." name="twitter:description"/>
+<meta content="Резюме Дмитрия Вердыша — digital-маркетолог, веб-разработчик и инди-разработчик. Опыт в performance-рекламе, SEO, разработке и AI-инструментах." name="twitter:description"/>
 <meta content="https://verdyshd.github.io/assets/og.png" name="twitter:image"/>
 <title>Резюме — Дмитрий Вердыш</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -135,12 +135,29 @@
   .cv-lang-level { font-size: 0.8rem; color: var(--text3); }
   .cv-lang-level.native { color: var(--accent); }
 
-  /* PRINT */
+  /* PRINT — отдельный чёрно-белый документ (не тёмный шаблон сайта) */
   @media print {
-    body { background: #fff; color: #111; }
-    .topbar { display: none; }
-    .cv-wrap { padding: 1rem; max-width: 100%; }
-    :root { --bg: #fff; --bg2: #f5f5f5; --bg3: #eee; --text: #111; --text2: #555; --text3: #888; --border: #ddd; --border2: #ccc; --accent: #4a7c00; }
+    @page { size: A4; margin: 13mm 14mm; }
+    :root { --bg:#fff; --bg2:#fff; --bg3:#fff; --text:#000; --text2:#1c1c1c; --text3:#555; --border:#c8c8c8; --border2:#a8a8a8; --accent:#000; }
+    html, body { background:#fff !important; color:#000 !important; }
+    body { font-size: 10.4pt; line-height: 1.5; }
+    .topbar, footer, .lang-switch, .download-btn, .back-btn, .topbar-title { display:none !important; }
+    .cv-wrap { max-width:100% !important; margin:0 !important; padding:0 !important; }
+    .cv-header { padding-bottom:1.1rem; margin-bottom:1.3rem; border-color:#000 !important; }
+    .cv-name, .cv-name span, .cv-avatar, .cv-avatar span { color:#000 !important; }
+    .cv-avatar { width:76px; height:76px; border:1px solid #000 !important; background:#fff !important; font-size:1.5rem; }
+    .cv-section { margin-bottom:1.25rem; }
+    .cv-section-title { color:#000 !important; border-bottom:1px solid #000 !important; break-after:avoid; page-break-after:avoid; }
+    .cv-job-company { color:#000 !important; font-weight:600; }
+    .cv-contact-item, .cv-about, .cv-job-list li, .cv-edu-spec, .cv-lang-name, .cv-title { color:#111 !important; }
+    a { color:#000 !important; text-decoration:none !important; }
+    svg[stroke] { stroke:#000 !important; }
+    svg[fill="#29B6F6"] { fill:#000 !important; }
+    .cv-tag, .cv-skill-tag, .cv-skill-tag.a { background:#fff !important; color:#000 !important; border:1px solid #999 !important; }
+    .cv-skill-tag.a { border-color:#000 !important; font-weight:600; }
+    .cv-lang-level, .cv-lang-level.native { color:#000 !important; }
+    .cv-job, .cv-edu, .cv-two > .cv-section { break-inside:avoid; page-break-inside:avoid; }
+    * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   }
 
   @media (max-width: 600px) {
@@ -154,7 +171,7 @@
 
   *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
 </style>
-<link href="https://verdyshd.github.io/resume.html" hreflang="ru" rel="alternate"/><link href="https://verdyshd.github.io/en/resume.html" hreflang="en" rel="alternate"/><link href="https://verdyshd.github.io/zh/resume.html" hreflang="zh-Hans" rel="alternate"/><link href="https://verdyshd.github.io/resume.html" hreflang="x-default" rel="alternate"/></head>
+<link href="https://verdyshd.github.io/resume.html" hreflang="ru" rel="alternate"/><link href="https://verdyshd.github.io/en/resume.html" hreflang="en" rel="alternate"/><link href="https://verdyshd.github.io/ro/resume.html" hreflang="ro" rel="alternate"/><link href="https://verdyshd.github.io/zh/resume.html" hreflang="zh-Hans" rel="alternate"/><link href="https://verdyshd.github.io/resume.html" hreflang="x-default" rel="alternate"/></head>
 <body>
 <div class="topbar">
 <div class="topbar-left">
@@ -162,7 +179,7 @@
 <span class="topbar-title">Резюме · Вердыш Дмитрий</span>
 </div>
 <div class="topbar-right">
-<div class="lang-switch"><a class="lang-btn active" href="/resume.html">RU</a><a class="lang-btn" href="/en/resume.html">EN</a><a class="lang-btn" href="/zh/resume.html">中文</a></div>
+<div class="lang-switch"><a class="lang-btn active" href="/resume.html">RU</a><a class="lang-btn" href="/en/resume.html">EN</a><a class="lang-btn" href="/ro/resume.html">RO</a><a class="lang-btn" href="/zh/resume.html">中文</a></div>
 <button class="download-btn" onclick="window.print()">
 <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="15"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
       Скачать PDF
@@ -173,7 +190,7 @@
 <div class="cv-header">
 <div>
 <div class="cv-name">Дмитрий <span>Вердыш</span></div>
-<div class="cv-title">Digital-маркетолог · Веб-разработчик · Инди-создатель</div>
+<div class="cv-title">Digital-маркетолог · Веб-разработчик · Инди-разработчик</div>
 <div class="cv-contacts">
 <div class="cv-contact-item">
 <svg fill="none" height="15" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="M2 7l10 7 10-7"></path></svg>
@@ -198,7 +215,7 @@
 <div class="cv-section">
 <div class="cv-section-title">Обо мне</div>
 <div class="cv-about">
-      Специалист на стыке digital-маркетинга, веб-разработки и создания продуктов. Настраиваю и веду рекламные кампании, занимаюсь SEO, монтирую видео и разрабатываю сайты. В свободное время развиваюсь как инди-разработчик — создаю AI-агентов и собственные продукты — FreePalp, DeepBridge, AMP, Nexura, AutoCAD AI. Быстро обучаюсь, работаю аккуратно и в срок.
+      Специалист на стыке digital-маркетинга, веб-разработки и создания продуктов. Настраиваю и веду рекламные кампании, занимаюсь SEO, монтирую видео и разрабатываю сайты. В свободное время развиваюсь как инди-разработчик — создаю AI-агентов и собственные продукты — FreePalp, DeepBridge, AMP, Nexura, AutoCAD AI, Pulse. Отдельно развиваю направление AI для инженерных чертежей (CAD). Быстро обучаюсь, работаю аккуратно и в срок.
     </div>
 </div>
 <div class="cv-section">
@@ -226,6 +243,23 @@
 <div class="cv-tags">
 <span class="cv-tag">Performance</span><span class="cv-tag">SEO</span>
 <span class="cv-tag">1С</span><span class="cv-tag">E-commerce</span><span class="cv-tag">AI</span>
+</div>
+</div>
+<div class="cv-job">
+<div class="cv-job-header">
+<div>
+<div class="cv-job-company">Ivesoldo SRL · Кишинев</div>
+<div class="cv-job-title">Учёт и документооборот (1С)</div>
+</div>
+<div class="cv-job-date">Январь 2026 — настоящее время</div>
+</div>
+<ul class="cv-job-list">
+<li>Обработка накладных и первичной документации</li>
+<li>Ведение договоров (сдача помещений в аренду)</li>
+<li>Разноска платежей в 1С</li>
+</ul>
+<div class="cv-tags">
+<span class="cv-tag">1С</span><span class="cv-tag">Документооборот</span><span class="cv-tag">Учёт</span>
 </div>
 </div>
 <div class="cv-job">
@@ -283,6 +317,7 @@
 <div class="cv-skill-tags">
 <span class="cv-skill-tag a">HTML / CSS</span><span class="cv-skill-tag a">JavaScript</span>
 <span class="cv-skill-tag">UX/UI</span><span class="cv-skill-tag">Figma</span><span class="cv-skill-tag">Баннеры</span>
+<span class="cv-skill-tag a">Презентации</span><span class="cv-skill-tag">Иллюстрация</span><span class="cv-skill-tag">Рисунок</span>
 </div>
 </div>
 <div>
@@ -296,6 +331,7 @@
 <div class="cv-skill-group-title">Продукты &amp; AI</div>
 <div class="cv-skill-tags">
 <span class="cv-skill-tag a">FreePalp</span><span class="cv-skill-tag a">DeepBridge</span><span class="cv-skill-tag">Nexura</span><span class="cv-skill-tag">AMP</span>
+<span class="cv-skill-tag a">AutoCAD AI</span><span class="cv-skill-tag a">Pulse</span><span class="cv-skill-tag">Чертежи (CAD)</span>
 <span class="cv-skill-tag">AI-инструменты</span><span class="cv-skill-tag">Боты</span><span class="cv-skill-tag">Machine Learning</span><span class="cv-skill-tag">1С</span>
 </div>
 </div>
