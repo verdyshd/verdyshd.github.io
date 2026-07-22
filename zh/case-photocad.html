@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>(function(){var p=location.pathname,c=/^\/en\//.test(p)?'en':/^\/zh\//.test(p)?'zh':'ru';try{var s=localStorage.getItem('lang');if(s&&s!==c){var f=p.replace(/^\/(en|zh)\//,'/');if(!/(case-amp|case-pulse|portfolio-cartum-preview)\.html/.test(f)){var pre=s==='en'?'/en':s==='zh'?'/zh':'';var t=f==='/'?pre+'/':pre+f;if(t!==p){location.replace(t);return;}}}}catch(e){}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.lang-switch a');if(a){var h=a.getAttribute('href')||'';var l=(/^\/en\//.test(h)||h==='/en/')?'en':(/^\/zh\//.test(h)||h==='/zh/')?'zh':'ru';try{localStorage.setItem('lang',l);}catch(_){}}},true);})();</script>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230d0d0d'/%3E%3Ctext x='50' y='64' font-family='Arial,sans-serif' font-size='44' font-weight='bold' fill='%23f0ede8' text-anchor='middle'%3EDV%3Ctspan fill='%23c8ff00'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" rel="icon"/>
+<meta content="照片 → CAD 图纸数字化：从楼层平面照片生成矢量 DXF（透视校正、墙体识别），并含平面编辑器与 AI 读取尺寸。" name="description"/>
+<link href="https://verdyshd.github.io/zh/case-photocad.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="https://verdyshd.github.io/zh/case-photocad.html" property="og:url"/>
+<meta content="照片 → CAD — 图纸数字化" property="og:title"/>
+<meta content="照片 → CAD 图纸数字化：从楼层平面照片生成矢量 DXF（透视校正、墙体识别），并含平面编辑器与 AI 读取尺寸。" property="og:description"/>
+<meta content="https://verdyshd.github.io/assets/og.png" property="og:image"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="Дмитрий Вердыш" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="照片 → CAD — 图纸数字化" name="twitter:title"/>
+<meta content="照片 → CAD 图纸数字化：从楼层平面照片生成矢量 DXF（透视校正、墙体识别），并含平面编辑器与 AI 读取尺寸。" name="twitter:description"/>
+<meta content="https://verdyshd.github.io/assets/og.png" name="twitter:image"/>
+<title>照片 → CAD — 图纸数字化</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/><noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/></noscript>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg:#0d0d0d;--bg2:#161616;--bg3:#1f1f1f;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--text:#f0ede8;--text2:#a0a0a0;--text3:#888;--accent:#c8ff00; }
+  html { scroll-behavior: smooth; }
+  body { background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6; }
+  h1,h2,h3,h4 { font-family:'Syne',sans-serif; }
+  a { color:inherit;text-decoration:none; }
+  .topbar { position:sticky;top:0;z-index:100;background:rgba(13,13,13,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center; }
+  .nav-logo { font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-0.02em; }
+  .nav-logo span { color:var(--accent); }
+  .back-btn { font-size:0.85rem;color:var(--text2);font-family:'Syne',sans-serif;font-weight:600;transition:color 0.2s; }
+  .back-btn:hover { color:var(--accent); }
+  .hero { max-width:980px;margin:0 auto;padding:4rem 2rem 0; }
+  .hero-top { display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem; }
+  .project-icon { width:64px;height:64px;border-radius:14px;background:rgba(200,255,0,0.08);border:1px solid rgba(200,255,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .hero h1 { font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1rem; }
+  .hero h1 span { color:var(--accent); }
+  .hero-desc { font-size:1rem;color:var(--text2);max-width:660px;line-height:1.75;margin-bottom:2rem; }
+  .hero-tags { display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem; }
+  .tag { padding:0.35rem 0.9rem;border:1px solid var(--border2);border-radius:100px;font-size:0.78rem;color:var(--text2); }
+  .tag.a { border-color:rgba(200,255,0,0.3);color:var(--accent);background:rgba(200,255,0,0.05); }
+  .note { display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.3rem;border:1px solid var(--border2);border-radius:100px;color:var(--text2);font-size:0.85rem;margin-bottom:2.5rem; }
+  .hero-divider { height:1px;background:var(--border);margin-bottom:3rem; }
+  .demo { max-width:980px;margin:0 auto;padding:0 2rem 1rem; }
+  .flow { display:flex;align-items:stretch;gap:0.75rem;flex-wrap:wrap; }
+  .flow-box { flex:1;min-width:150px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.2rem; }
+  .flow-box .k { font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin-bottom:0.5rem; }
+  .flow-box .v { font-size:0.9rem;color:var(--text);line-height:1.5; }
+  .flow-box.prompt .v { font-family:monospace;color:var(--accent);font-size:0.82rem; }
+  .flow-arrow { display:flex;align-items:center;color:var(--accent);font-size:1.4rem; }
+  .layout { max-width:980px;margin:0 auto;padding:1.5rem 2rem 5rem;display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start; }
+  @media(max-width:768px){.layout{grid-template-columns:1fr}.topbar,.hero,.demo{padding-left:1.25rem;padding-right:1.25rem}.layout{padding:1rem 1.25rem 4rem}.flow-arrow{transform:rotate(90deg)}}
+  .section { margin-bottom:2.5rem; }
+  .section-title { font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(200,255,0,0.12); }
+  .section-text { font-size:0.92rem;color:var(--text2);line-height:1.75; }
+  .section-text strong { color:var(--text); }
+  .features { display:flex;flex-direction:column;gap:0.85rem; }
+  .feature { display:flex;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px; }
+  .fi { width:36px;height:36px;border-radius:9px;background:rgba(200,255,0,0.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+  .fb h4 { font-family:'Syne',sans-serif;font-size:0.875rem;font-weight:700;margin-bottom:0.25rem; }
+  .fb p { font-size:0.82rem;color:var(--text2);line-height:1.6; }
+  .sidebar-card { background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.25rem; }
+  .sct { font-family:'Syne',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);padding:1rem 1.25rem 0;margin-bottom:0.75rem; }
+  .ir { display:flex;justify-content:space-between;align-items:center;padding:0.6rem 1.25rem;border-top:1px solid var(--border);font-size:0.83rem;gap:1rem; }
+  .ir:first-of-type { border-top:none; }
+  .il { color:var(--text3); }
+  .iv { color:var(--text);font-weight:500;text-align:right; }
+  .iv.a { color:var(--accent); }
+  .stack-list { padding:0 1.25rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem; }
+  .st { padding:0.25rem 0.65rem;background:var(--bg3);border-radius:100px;font-size:0.75rem;color:var(--text2); }
+  .sidebar { position:sticky;top:80px; }
+  *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
+  .lang-switch{display:flex;gap:1px;border:1px solid var(--border2);border-radius:100px;padding:2px}
+  .lang-btn{font-family:'Syne',sans-serif;font-weight:600;font-size:0.72rem;color:var(--text3);background:transparent;border:none;border-radius:100px;padding:0.3rem 0.6rem;cursor:pointer;transition:all .15s;line-height:1;text-decoration:none}
+  .lang-btn:hover{color:var(--text)}
+  .lang-btn.active{background:var(--accent);color:var(--bg)}
+  @media print{.lang-switch{display:none}}
+</style>
+<link href="https://verdyshd.github.io/case-photocad.html" hreflang="ru" rel="alternate"/><link href="https://verdyshd.github.io/en/case-photocad.html" hreflang="en" rel="alternate"/><link href="https://verdyshd.github.io/zh/case-photocad.html" hreflang="zh-Hans" rel="alternate"/><link href="https://verdyshd.github.io/case-photocad.html" hreflang="x-default" rel="alternate"/></head>
+<body>
+<div class="topbar">
+<a class="back-btn" href="/zh/portfolio.html">← 作品集</a>
+<div style="display:flex;align-items:center;gap:1rem">
+<div class="lang-switch"><a class="lang-btn" href="/case-photocad.html">RU</a><a class="lang-btn" href="/en/case-photocad.html">EN</a><a class="lang-btn active" href="/zh/case-photocad.html">中文</a></div>
+<div class="nav-logo">DV<span>.</span></div>
+</div>
+</div>
+<div class="hero">
+<div class="hero-top">
+<div class="project-icon">
+<svg fill="none" height="30" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="30"><path d="M3 3h18v18H3z"></path><path d="M3 9h18M9 21V9"></path></svg>
+</div>
+<div>
+<div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);font-weight:600;margin-bottom:0.2rem;">产品 · AI + CAD</div>
+<div style="font-size:0.82rem;color:var(--text3);">照片 → 图纸 · 闭源开发</div>
+</div>
+</div>
+<h1>Фото → <span>CAD</span></h1>
+<p class="hero-desc">图纸数字化：把普通的楼层平面照片转成可编辑的矢量图纸（DXF）。省去手工重绘 —— 输入照片，输出干净的 CAD。这是独立产品，与按提示生成无关。</p>
+<div class="hero-tags">
+<span class="tag a">AI + CAD</span><span class="tag a">Photo → DXF</span><span class="tag">计算机视觉</span>
+<span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">数字化</span>
+</div>
+<div class="note">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15"><rect height="11" rx="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+    闭源开发 —— 概要说明
+  </div>
+<div class="hero-divider"></div>
+</div>
+<div class="demo">
+<div class="flow">
+<div class="flow-box prompt"><div class="k">输入</div><div class="v">楼层平面照片（手机拍摄）</div></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box"><div class="k">处理</div><div class="v">透视校正、墙体识别与拉直</div></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box"><div class="k">结果</div><div class="v">矢量 DXF 图纸 + 平面编辑器</div></div>
+</div>
+</div>
+<div class="layout">
+<div>
+<div class="section">
+<div class="section-title">关于项目</div>
+<p class="section-text" data-i18nh="aboutp">该工具把<strong>平面照片</strong>转成干净的矢量图纸。流水线按灭点校正透视，拉直并焊接墙体（正交吸附、聚类、节点缝合），输出可在任意 CAD 打开的 <strong>DXF</strong>。另有<strong>平面编辑器</strong>用于微调结果，以及直接从照片<strong>读取尺寸的 AI</strong>。这不是按提示生成（如 AutoCAD AI），而是相反的任务 —— 将已有图纸数字化。项目闭源；以下为事实概述。</p>
+</div>
+<div class="section">
+<div class="section-title">功能</div>
+<div class="features">
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg></div><div class="fb"><h4>照片 → 矢量图纸</h4><p>从平面照片中提取墙线与轮廓生成 DXF —— 无需在图上手工描线。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M3 21v-4l12-12 4 4L7 21z"></path><path d="M14 6l4 4"></path></svg></div><div class="fb"><h4>校正与拉直</h4><p>按灭点消除透视，将墙体拉成直角，焊接节点 —— 输出整洁的几何，而非「歪斜的扫描」。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></div><div class="fb"><h4>平面编辑器</h4><p>本地界面：上传照片、查看结果、手动校准比例并在导出前微调。</p></div></div>
+<div class="feature"><div class="fi"><svg fill="none" height="16" stroke="#c8ff00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path><circle cx="12" cy="12" r="3"></circle></svg></div><div class="fb"><h4>AI 读取尺寸</h4><p>视觉模型读取照片上标注的尺寸并填入图纸 —— 减少手工录入。</p></div></div>
+</div>
+</div>
+</div>
+<aside class="sidebar">
+<div class="sidebar-card">
+<div class="sct">关于项目</div>
+<div class="ir"><span class="il">类型</span><span class="iv">AI + CAD 工具</span></div>
+<div class="ir"><span class="il">技术栈</span><span class="iv">Python · OpenCV</span></div>
+<div class="ir"><span class="il">Ввод</span><span class="iv">平面照片</span></div>
+<div class="ir"><span class="il">输出</span><span class="iv a">DXF</span></div>
+<div class="ir"><span class="il">访问</span><span class="iv">闭源</span></div>
+<div class="ir"><span class="il">状态</span><span class="iv a">● 开发中</span></div>
+<div class="ir"><span class="il">角色</span><span class="iv">作者 / 开发者</span></div>
+</div>
+<div class="sidebar-card">
+<div class="sct">技术</div>
+<div class="stack-list">
+<span class="st">Python</span><span class="st">OpenCV</span><span class="st">DXF / ezdxf</span>
+<span class="st">计算机视觉</span><span class="st">VLM</span><span class="st">平面编辑器</span>
+</div>
+</div>
+</aside>
+</div>
+<div style="max-width:1000px;margin:0 auto;padding:0 2rem 1rem;"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.6rem 1.9rem;display:flex;justify-content:space-between;align-items:center;gap:1.25rem;flex-wrap:wrap;"><div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.25rem;">需要类似的项目？</div><div style="font-size:0.88rem;color:var(--text2);">说说你的需求 —— 我会很快回复。</div></div><a href="https://t.me/+37360410819" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--accent);color:#0d0d0d;border-radius:100px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.875rem;white-space:nowrap;">通过 Telegram 联系 →</a></div></div>
+
+
+<footer style="border-top:1px solid rgba(255,255,255,0.08);max-width:1000px;margin:3rem auto 0;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;font-family:'Syne',sans-serif;"><span style="font-weight:800;font-size:0.95rem;color:#f0ede8;">DV<span style="color:#c8ff00;">.</span></span><span style="font-size:0.8rem;color:#888;">© 2026 Дмитрий Вердыш · <a href="mailto:verdyshd@gmail.com" style="color:#888;">verdyshd@gmail.com</a></span></footer>
+<script src="/assets/lightbox.js"></script>
+<script src="/assets/lang-banner.js"></script>
+</body>
+</html>
